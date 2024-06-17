@@ -120,7 +120,7 @@ const Login = () => {
         </div>
 
         <div className=" w-full flex justify-center">
-          <div className=" flex items-center gap-6 text-sm mt-4">
+          <div className=" flex items-center gap-4 sm:gap-6 text-xs sm:text-sm mt-4">
             &copy; 2022 Brand, Inc.
             <div>Privacy</div>
             <div>Terms</div>

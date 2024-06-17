@@ -23,15 +23,17 @@ const Register = () => {
           />
           <div className=" font-semibold text-gray-700 text-lg">respondo</div>
         </div>
-        <div className=" flex flex-col items-center w-full p-5">
-          <div className=" text-4xl font-bold mb-8">Start your free trial</div>
+        <div className=" flex flex-col items-center w-full p-4 sm:p-5">
+          <div className=" text-2xl sm:text-4xl text-center font-bold mb-8">
+            Start your free trial
+          </div>
           <div className="flex items-center gap-1 mb-4">
             <img
               src="/google.png"
               alt=""
               className="w-9 h-9 border border-blue-800 rounded-l-md p-2"
             />
-            <div className="flex justify-center cursor-pointer hover:bg-yellow-600 transition-all duration-300 ease-in-out items-center gap-3 bg-yellow-500 rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-700">
+            <div className="flex justify-center cursor-pointer hover:bg-yellow-600 transition-all duration-300 ease-in-out items-center gap-3 bg-yellow-500 rounded-r-md py-2 px-4 sm:px-2 w-auto sm:w-[22rem] text-gray-700">
               <div className=" text-sm">Sign up with Google</div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +140,7 @@ const Register = () => {
         </div>
 
         <div className=" w-full flex justify-center">
-          <div className=" flex items-center gap-6 text-sm mt-4">
+          <div className=" flex items-center gap-4 sm:gap-6 text-xs sm:text-sm mt-4">
             &copy; 2022 Brand, Inc.
             <div>Privacy</div>
             <div>Terms</div>
