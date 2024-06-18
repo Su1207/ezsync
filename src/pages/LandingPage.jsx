@@ -8,6 +8,7 @@ import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import ResponsiveNavbar from "../components/LandingPageComponents/ResponsiveNavbar";
 import { useNavigate } from "react-router-dom";
+import Features from "../components/LandingPageComponents/Features";
 
 const LandingPage = () => {
   const videoRef = useRef(null);
@@ -146,75 +147,7 @@ const LandingPage = () => {
         </video>
       </div>
 
-      <div
-        id="features"
-        className="w-full flex lg:flex-row flex-col-reverse items-center justify-between gap-12 py-12 md:py-32 px-6 md:px-16 bg-white"
-      >
-        <div className=" text-gray-800 text-center md:text-left lg:w-[45%]">
-          <p className=" font-semibold mb-2 text-lg text-gray-500">
-            Our Features
-          </p>
-          <h2 className=" text-3xl sm:text-4xl font-bold mb-5">
-            Instantly Visualize your Ideas
-          </h2>
-          <p className=" text-sm text-gray-500 leading-6">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe
-            dicta fugiat quas quo voluptatibus assumenda asperiores minima
-            mollitia dignissimos.
-          </p>
-        </div>
-        <div className="flex-1">
-          <img
-            src="/image1.jpg"
-            alt=""
-            className=" lg:h-[50vh] xl:h-[60vh] rounded-3xl"
-          />
-        </div>
-      </div>
-
-      <div className="w-full flex lg:flex-row-reverse flex-col-reverse items-center justify-between gap-12 py-12 md:py-32 px-6 md:px-16">
-        <div className=" text-center md:text-left lg:w-[45%]">
-          <p className=" font-semibold mb-2 text-lg">Our Features</p>
-          <h2 className=" text-3xl sm:text-4xl font-bold mb-5">
-            Transform Articrafts into Designs
-          </h2>
-          <p className=" text-sm text-gray-500 leading-6">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe
-            dicta fugiat quas quo voluptatibus assumenda asperiores minima
-            mollitia dignissimos.
-          </p>
-        </div>
-        <div className="flex-1">
-          <img
-            src="/image1.jpg"
-            alt=""
-            className="rounded-3xl lg:h-[50vh] xl:h-[60vh]"
-          />
-        </div>
-      </div>
-
-      <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between gap-12 py-12 md:py-32 px-6 md:px-16 bg-white">
-        <div className=" text-gray-800 text-center md:text-left lg:w-[45%]">
-          <p className=" font-semibold mb-2 text-lg text-gray-500">
-            Our Features
-          </p>
-          <h2 className=" text-3xl sm:text-4xl font-bold mb-5">
-            Iterate with AI for Precision
-          </h2>
-          <p className=" text-sm text-gray-500 leading-6">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe
-            dicta fugiat quas quo voluptatibus assumenda asperiores minima
-            mollitia dignissimos.
-          </p>
-        </div>
-        <div className="flex-1">
-          <img
-            src="/image1.jpg"
-            alt=""
-            className="rounded-3xl lg:h-[50vh] xl:h-[60vh]"
-          />
-        </div>
-      </div>
+      <Features />
 
       <div
         id="templates"
