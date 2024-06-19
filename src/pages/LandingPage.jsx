@@ -9,6 +9,8 @@ import { useInView } from "react-intersection-observer";
 import ResponsiveNavbar from "../components/LandingPageComponents/ResponsiveNavbar";
 import { useNavigate } from "react-router-dom";
 import Features from "../components/LandingPageComponents/Features";
+import Pricing from "../components/LandingPageComponents/Pricing";
+import ContactForm from "../components/LandingPageComponents/ContactForm";
 
 const LandingPage = () => {
   const videoRef = useRef(null);
@@ -103,7 +105,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="w-full text-white pt-5 min-h-screen font-poppins bg-[#000]">
+    <div className="w-full text-white pt-5 min-h-screen font-poppins">
       <Navbar />
 
       <ResponsiveNavbar
@@ -128,7 +130,7 @@ const LandingPage = () => {
           className=" text-xs sm:text-base text-center"
         >
           {animateText(
-            " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, culpa voluptatibus.",
+            "An innovative artificial intelligence platform that conducts interviews with candidates",
             0
           )}
         </motion.div>
@@ -141,7 +143,11 @@ const LandingPage = () => {
       </div>
 
       <div className="video-container rounded-md flex items-center justify-center mb-20">
-        <video className="video-player w-[80%]" controls ref={videoRef}>
+        <video
+          className="video-player w-[80%] h-auto lg:h-[85vh]"
+          controls
+          ref={videoRef}
+        >
           <source src="/video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -150,68 +156,34 @@ const LandingPage = () => {
       <Features />
 
       <div
-        id="templates"
+        id="team"
         className="w-full flex flex-col px-6 gap-6 justify-center items-center py-24"
       >
-        <div className="">Templates</div>
         <div className=" text-3xl sm:text-5xl font-bold text-[#45ffc7]">
-          Build Your Tale
+          Team
         </div>
         <button
           onClick={handleClick}
-          className=" rounded-full shadow-md px-20 py-4 mt-2 bg-cyan-400 hover:bg-white transition-all duration-300 ease-in-out hover:text-black"
+          className=" rounded-full shadow-md px-20 py-4 bg-cyan-400 hover:bg-white transition-all duration-300 ease-in-out hover:text-black"
         >
           Get Started
         </button>
-        <div className="flex items-center gap-5 mt-16 overflow-auto">
-          <img src="/image1.jpg" alt="" className=" w-80 rounded-lg" />
-          <img src="/image1.jpg" alt="" className=" w-80 rounded-lg" />
-          <img src="/image1.jpg" alt="" className=" w-80 rounded-lg" />
-          <img src="/image1.jpg" alt="" className=" w-80 rounded-lg" />
-          <img src="/image1.jpg" alt="" className=" w-80 rounded-lg" />
+        <div className="flex items-center gap-5 mt-2 overflow-auto">
+          <img src="/team1.jpeg" alt="" className=" w-80 rounded-lg" />
+          <img src="/team2.jpeg" alt="" className=" w-80 rounded-lg" />
+          <img src="/team3.jpeg" alt="" className=" w-80 rounded-lg" />
+          <img src="/team2.jpeg" alt="" className=" w-80 rounded-lg" />
+          <img src="/team1.jpeg" alt="" className=" w-80 rounded-lg" />
         </div>
       </div>
 
-      {/* <div className=" w-full py-24 px-12 lg:px-24">
-        <div className="w-full flex items-center justify-between mb-4">
-          <h2 className="text-5xl font-bold">Customer Stories</h2>
-          <div className=" flex items-center gap-4">
-            <ChevronLeftIcon className=" w-[3rem] p-1 border rounded-full hover:border-cyan-500 cursor-pointer hover:text-cyan-500 transition-all duration-300 ease-in-out" />
-            <ChevronRightIcon className=" w-[3rem] p-1 border rounded-full hover:border-cyan-500 cursor-pointer hover:text-cyan-500 transition-all duration-300 ease-in-out" />
-          </div>
-        </div>
-
-        <div className=" flex items-center gap-5 justify-between mt-16">
-          <CustomerCards
-            profile={"/man.png"}
-            content={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ab laboriosam, magnam, sint eligendi sapiente impedit, voluptatum verovoluptatem deserunt mollitia odit"
-            }
-            name={"Elizabeth Taylor"}
-            post={"Product Manager"}
-          />
-          <CustomerCards
-            profile={"/man.png"}
-            content={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ab laboriosam, magnam, sint eligendi sapiente impedit, voluptatum verovoluptatem deserunt mollitia odit"
-            }
-            name={"Elizabeth Taylor"}
-            post={"Product Manager"}
-          />
-          <CustomerCards
-            profile={"/man.png"}
-            content={
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet ab laboriosam, magnam, sint eligendi sapiente impedit, voluptatum verovoluptatem deserunt mollitia odit"
-            }
-            name={"Elizabeth Taylor"}
-            post={"Product Manager"}
-          />
-        </div>
-      </div> */}
+      <Pricing />
 
       <FeedBacks />
 
-      <div className=" w-full flex flex-col gap-6 items-center justify-center px-5 mt-28 mb-40">
+      <ContactForm />
+
+      <div className="  w-full flex flex-col gap-6 items-center justify-center px-5  mb-24">
         <h1 className="text-3xl text-[#45ffc7] sm:text-5xl md:text-6xl text-center font-extrabold">
           Be the first to try
         </h1>

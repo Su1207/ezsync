@@ -165,11 +165,11 @@ const FeedBacks = () => {
   }, []);
 
   return (
-    <div className=" h-screen mt-[6rem] overflow-hidden">
+    <div className=" mt-[6rem] overflow-hidden">
       <div className="text-center text-3xl text-white md:text-5xl font-bold ">
         Customer Stories
       </div>
-      <div className="flex justify-center w-full mt-32">
+      <div className="flex justify-center w-full mt-24">
         {cards.map((card) => (
           <motion.div
             key={card.id}

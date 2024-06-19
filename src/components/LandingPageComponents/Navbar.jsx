@@ -8,17 +8,15 @@ const Navbar = () => {
         <a href="#features" data-replace="Features">
           <span>Features</span>
         </a>
-        <a href="#templates" data-replace="Templates">
-          <span>Templates</span>
+        <a href="#team" data-replace="Team">
+          <span>Team</span>
         </a>
-        <a data-replace="Pricing">
+        <a data-replace="Pricing" href="#pricing">
           <span>Pricing</span>
         </a>
-        <a data-replace="Blog">
-          <span>Blog</span>
-        </a>
-        <a href="/login" data-replace="Sign In">
-          <span>Sign In</span>
+
+        <a href="#contact" data-replace="Contact">
+          <span>Contact</span>
         </a>
         <Link
           to="/register"

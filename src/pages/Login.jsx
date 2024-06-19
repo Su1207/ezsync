@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState("student");
 
   const handleClick = () => {
     navigate("/register");
@@ -13,26 +14,40 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-sky-100">
-      <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-violet-500 flex flex-col justify-between p-5">
-        <div className="flex items-center gap-2">
-          <img
-            src="/support.png"
-            alt=""
-            className="h-5 w-5 p-1 bg-teal-400 rounded-full"
-          />
-          <div className=" font-semibold text-gray-700 text-lg">respondo</div>
-        </div>
+    <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-white">
+      <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-[#45ffc7] flex flex-col justify-between p-5">
         <div className=" flex flex-col items-center w-full p-5">
-          <div className=" text-4xl font-bold mb-8">Sign In</div>
+          <div className=" text-4xl font-bold mb-4">Sign In</div>
+          <div className=" flex items-center gap-3 mb-8 ">
+            <div
+              onClick={() => setSelectedOption("student")}
+              className={`${
+                selectedOption === "student"
+                  ? "bg-blue-500 text-white"
+                  : "bg-white text-black"
+              } shadow-lg rounded-sm px-4 py-2 text-sm cursor-pointer transition-all duration-300 ease-in-out`}
+            >
+              Student
+            </div>
+            <div
+              onClick={() => setSelectedOption("company")}
+              className={`${
+                selectedOption === "company"
+                  ? "bg-blue-500 text-white"
+                  : "bg-white text-black"
+              } shadow-lg rounded-sm px-4 py-2 text-sm cursor-pointer transition-all duration-300 ease-in-out`}
+            >
+              Company
+            </div>
+          </div>
           <div className="flex items-center gap-1 mb-4">
             <img
               src="/google.png"
               alt=""
               className="w-9 h-9 border border-blue-800 rounded-l-md p-2"
             />
-            <div className="flex justify-center cursor-pointer hover:bg-yellow-600 transition-all duration-300 ease-in-out items-center gap-3 bg-yellow-500 rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-700">
-              <div className=" text-sm">Sign up with Google</div>
+            <div className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300">
+              <div className=" text-sm">Sign in with Google</div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -51,22 +66,22 @@ const Login = () => {
           </div>
 
           <div className=" flex items-center mb-4 justify-between w-auto sm:w-[24rem]">
-            <div className="h-0 border w-1/4"></div>
-            <div className=" text-white text-sm w-2/4 text-center">
+            <div className="h-0 border-black border w-1/4"></div>
+            <div className=" text-black text-sm w-2/4 text-center">
               or using your email
             </div>
-            <div className="h-0 border w-1/4"></div>
+            <div className="h-0 border-black border w-1/4"></div>
           </div>
 
           <form className="flex flex-col gap-2 w-auto sm:w-[24rem]">
             <div className="flex flex-col gap-1">
-              <label className=" text-white font-bold text-sm">
+              <label className=" text-black font-semibold text-sm">
                 Work Email
               </label>
               <input
                 type="email"
                 placeholder="youremail@company.com"
-                className=" w-full p-2.5 border border-red-600 text-sm bg-transparent rounded-md outline-none text-white"
+                className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
               <div className=" w-full p-2.5 rounded-md shadow-lg bg-blue-50 flex justify-start items-start gap-2 mt-1">
                 <svg
@@ -91,40 +106,33 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className=" text-white font-bold text-sm">Password</label>
+              <label className=" text-black font-semibold text-sm">
+                Password
+              </label>
               <input
                 type="password"
                 placeholder="At least 12 characters"
-                className=" w-full p-2.5 border border-red-600 text-sm bg-transparent rounded-md outline-none text-white"
+                className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
             </div>
             <button
               type="submit"
-              className=" w-full p-2.5 rounded-md hover:bg-yellow-600 transition-all duration-300 ease-in-out flex justify-center items-center bg-yellow-500 text-sm mt-4 text-gray-700 outline-none"
+              className=" w-full p-2.5 rounded-md hover:text-white transition-all duration-300 ease-in-out flex justify-center items-center bg-[#1e1c25] text-sm mt-4 text-gray-200 outline-none"
             >
               Sign In
             </button>
           </form>
 
           <div className=" flex items-center gap-1 justify-end  w-auto sm:w-[24rem] mt-2">
-            <div className=" text-white text-xs sm:text-sm font-semibold">
+            <div className=" text-gray-700 text-xs sm:text-sm font-light">
               Are you new to Respondo?
             </div>
             <div
               onClick={handleClick}
-              className=" text-white text-xs sm:text-sm px-6 sm:px-10 py-2 rounded-sm  bg-sky-400 hover:bg-sky-500 transition-all duration-300 ease-in-out"
+              className=" text-white text-xs sm:text-sm px-6 sm:px-10 py-2 rounded-sm  bg-blue-600 hover:bg-blue-800 transition-all duration-300 ease-in-out"
             >
               Register
             </div>
-          </div>
-        </div>
-
-        <div className=" w-full flex justify-center">
-          <div className=" flex items-center gap-4 sm:gap-6 text-xs sm:text-sm mt-4">
-            &copy; 2022 Brand, Inc.
-            <div>Privacy</div>
-            <div>Terms</div>
-            <div>Sitemap</div>
           </div>
         </div>
       </div>
