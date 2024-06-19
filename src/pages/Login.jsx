@@ -15,7 +15,7 @@ const Login = () => {
 
   return (
     <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-white">
-      <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-[#45ffc7] flex flex-col justify-between p-5">
+      <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-[#45ffc7] flex flex-col justify-center p-5">
         <div className=" flex flex-col items-center w-full p-5">
           <div className=" text-4xl font-bold mb-4">Sign In</div>
           <div className=" flex items-center gap-3 mb-8 ">

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Features from "../components/LandingPageComponents/Features";
 import Pricing from "../components/LandingPageComponents/Pricing";
 import ContactForm from "../components/LandingPageComponents/ContactForm";
+import OldWayNewWay from "../components/LandingPageComponents/OldWayNewWay";
 
 const LandingPage = () => {
   const videoRef = useRef(null);
@@ -114,7 +115,10 @@ const LandingPage = () => {
         setMagnetActive={setMagnetActive}
       />
 
-      <div className=" w-full flex flex-col gap-6 px-5 items-center justify-center mt-28 mb-40">
+      <div className="relative w-full flex flex-col gap-6 px-5 items-center justify-center mt-28 mb-40">
+        <div className=" absolute lg:block hidden right-6 lg:right-36 top-[-2rem]">
+          <img src="/user.jpeg" alt="" className=" w-20 h-20 rounded-full " />
+        </div>
         <motion.div
           ref={ref}
           initial="hidden"
@@ -155,6 +159,8 @@ const LandingPage = () => {
 
       <Features />
 
+      <OldWayNewWay />
+
       <div
         id="team"
         className="w-full flex flex-col px-6 gap-6 justify-center items-center py-24"
@@ -183,7 +189,13 @@ const LandingPage = () => {
 
       <ContactForm />
 
-      <div className="  w-full flex flex-col gap-6 items-center justify-center px-5  mb-24">
+      <div className="  w-full flex flex-col gap-6 items-center justify-center px-5  my-[10rem] relative">
+        <div className=" absolute right-32 top-[-6rem] lg:top-32">
+          <img src="/stars.svg" alt="" className=" h-16" />
+        </div>
+        <div className=" absolute left-16 sm:left-32 md:left-48 lg:left-64 top-32 sm:top-24">
+          <img src="/lamp-icon.svg" alt="" className=" h-16 rotate-[30deg]" />
+        </div>
         <h1 className="text-3xl text-[#45ffc7] sm:text-5xl md:text-6xl text-center font-extrabold">
           Be the first to try
         </h1>

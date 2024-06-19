@@ -73,10 +73,10 @@ const ResponsiveNavbar = ({ isMenuOpen, setIsMenuOpen, setMagnetActive }) => {
 
           <a
             href="#contact"
-            data-replace="Contact"
+            data-replace="Book a Demo"
             onClick={() => setIsMenuOpen(false)}
           >
-            <span className=" text-3xl">Contact</span>
+            <span className=" text-3xl">Book a Demo</span>
           </a>
           <a href="/register" data-replace="Sign In">
             <span className=" text-3xl" onClick={() => setIsMenuOpen(false)}>

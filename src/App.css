@@ -10,16 +10,16 @@
 html {
   scroll-behavior: smooth;
 }
-
+/* src/index.css */
 body {
-  background: linear-gradient(
-    90deg,
-    rgba(7, 3, 80, 1) 0%,
-    rgba(3, 11, 27, 1) 8%,
-    rgba(0, 0, 0, 1) 56%,
-    rgba(7, 18, 39, 1) 92%,
-    rgba(13, 19, 70, 1) 100%
-  );
+  background-image: url("/bg.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* Changed to cover to ensure it covers the full screen */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+  width: 100vw; /* Ensure it covers the full viewport width */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
 a {
