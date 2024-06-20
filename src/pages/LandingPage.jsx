@@ -12,6 +12,7 @@ import Features from "../components/LandingPageComponents/Features";
 import Pricing from "../components/LandingPageComponents/Pricing";
 import ContactForm from "../components/LandingPageComponents/ContactForm";
 import OldWayNewWay from "../components/LandingPageComponents/OldWayNewWay";
+import Team from "../components/LandingPageComponents/Team";
 
 const LandingPage = () => {
   const videoRef = useRef(null);
@@ -31,7 +32,7 @@ const LandingPage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   useEffect(() => {
@@ -140,7 +141,7 @@ const LandingPage = () => {
         </motion.div>
         <button
           onClick={handleClick}
-          className=" rounded-full shadow-md px-20 py-4 mt-2 bg-cyan-400 hover:bg-white hover:text-black transition-all duration-300 ease-in-out"
+          className=" rounded-full shadow-md px-10 sm:px-20 py-2 sm:py-4 mt-2 bg-cyan-400 hover:bg-white hover:text-black transition-all duration-300 ease-in-out"
         >
           Get Started
         </button>
@@ -161,27 +162,76 @@ const LandingPage = () => {
 
       <OldWayNewWay />
 
-      <div
+      {/* <div
         id="team"
         className="w-full flex flex-col px-6 gap-6 justify-center items-center py-24"
       >
-        <div className=" text-3xl sm:text-5xl font-bold text-[#45ffc7]">
+        <div className="text-3xl sm:text-5xl font-bold text-[#45ffc7]">
           Team
         </div>
         <button
           onClick={handleClick}
-          className=" rounded-full shadow-md px-20 py-4 bg-cyan-400 hover:bg-white transition-all duration-300 ease-in-out hover:text-black"
+          className="rounded-full shadow-md px-10 sm:px-20 py-2 sm:py-4 bg-cyan-400 hover:bg-white transition-all duration-300 ease-in-out hover:text-black"
         >
           Get Started
         </button>
-        <div className="flex items-center gap-5 mt-2 overflow-auto">
-          <img src="/team1.jpeg" alt="" className=" w-80 rounded-lg" />
-          <img src="/team2.jpeg" alt="" className=" w-80 rounded-lg" />
-          <img src="/team3.jpeg" alt="" className=" w-80 rounded-lg" />
-          <img src="/team2.jpeg" alt="" className=" w-80 rounded-lg" />
-          <img src="/team1.jpeg" alt="" className=" w-80 rounded-lg" />
+        <div className="w-full flex justify-center">
+          <div className="flex items-center gap-5 mt-2 overflow-x-auto snap-x snap-mandatory w-full">
+            <div className="relative w-80 flex-shrink-0 snap-start">
+              <img
+                src="/team1.jpeg"
+                alt=""
+                className="w-80 rounded-lg hover:opacity-20"
+              />
+              <div className="absolute bottom-2 left-2 text-white opacity-0 hover:opacity-100">
+                <div>Caleb Jones</div>
+              </div>
+            </div>
+            <div className="relative w-80 flex-shrink-0 snap-start">
+              <img
+                src="/team2.jpeg"
+                alt=""
+                className="w-80 rounded-lg hover:opacity-20"
+              />
+              <div className="absolute bottom-2 left-2 text-white opacity-0 hover:opacity-100">
+                Team Member 2
+              </div>
+            </div>
+            <div className="relative w-80 flex-shrink-0 snap-start">
+              <img
+                src="/team3.jpeg"
+                alt=""
+                className="w-80 rounded-lg hover:opacity-20"
+              />
+              <div className="absolute bottom-2 left-2 text-white opacity-0 hover:opacity-100">
+                Team Member 3
+              </div>
+            </div>
+            <div className="relative w-80 flex-shrink-0 snap-start">
+              <img
+                src="/team2.jpeg"
+                alt=""
+                className="w-80 rounded-lg hover:opacity-20"
+              />
+              <div className="absolute bottom-2 left-2 text-white opacity-0 hover:opacity-100">
+                Team Member 2
+              </div>
+            </div>
+            <div className="relative w-80 flex-shrink-0 snap-start">
+              <img
+                src="/team1.jpeg"
+                alt=""
+                className="w-80 rounded-lg hover:opacity-20"
+              />
+              <div className="absolute bottom-2 left-2 text-white opacity-0 hover:opacity-100">
+                Team Member 1
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </div> */}
+
+      <Team />
 
       <Pricing />
 
@@ -190,7 +240,7 @@ const LandingPage = () => {
       <ContactForm />
 
       <div className="  w-full flex flex-col gap-6 items-center justify-center px-5  my-[10rem] relative">
-        <div className=" absolute right-32 top-[-6rem] lg:top-32">
+        <div className=" absolute right-32 top-[-6rem] lg:top-36">
           <img src="/stars.svg" alt="" className=" h-16" />
         </div>
         <div className=" absolute left-16 sm:left-32 md:left-48 lg:left-64 top-32 sm:top-24">
@@ -199,9 +249,12 @@ const LandingPage = () => {
         <h1 className="text-3xl text-[#45ffc7] sm:text-5xl md:text-6xl text-center font-extrabold">
           Be the first to try
         </h1>
+        <div className=" absolute right-16 sm:right-32 md:right-48 lg:right-[18rem] top-32 sm:top-12">
+          <img src="/lamp-icon.svg" alt="" className=" h-10 rotate-[-30deg]" />
+        </div>
         <button
           onClick={handleClick}
-          className=" rounded-full shadow-md px-20 py-4 mt-2 bg-cyan-400 hover:bg-white transition-all duration-300 ease-in-out hover:text-black"
+          className=" rounded-full shadow-md px-10 sm:px-20 py-2 sm:py-4 mt-2 bg-cyan-400 hover:bg-white transition-all duration-300 ease-in-out hover:text-black"
         >
           Get Started
         </button>

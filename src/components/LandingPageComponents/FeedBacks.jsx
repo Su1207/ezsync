@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
-const Card = ({ card }) => {
+const Card = ({ card, onHoverStart, onHoverEnd }) => {
   return (
-    <div className=" relative h-[350px] sm:h-[300px] w-[80vw] sm:w-[24rem] md:w-[100%] bg-[#1e1c25] rounded-lg text-white flex flex-col gap-4 items-center justify-center">
+    <div
+      onMouseEnter={onHoverStart}
+      onMouseLeave={onHoverEnd}
+      className=" relative h-[350px] sm:h-[300px] w-[80vw] sm:w-[24rem] md:w-[100%] bg-[#1e1c25] rounded-lg text-white flex flex-col gap-4 items-center justify-center"
+    >
       <div className="absolute top-[-3rem] z-50">
         <img src="/man.png" alt="" className="h-24 w-24" />
       </div>
@@ -77,6 +82,7 @@ const cards = [
 
 const FeedBacks = () => {
   const [positionIndexes, setPositionIndexes] = useState([0, 1, 2, 3, 4]);
+  const [isAutoplay, setIsAutoplay] = useState(true);
 
   const [isMobile, setIsMobile] = useState(false);
   const [isSmall, setIsSmall] = useState(false);
@@ -152,24 +158,46 @@ const FeedBacks = () => {
       };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setPositionIndexes((prevIndexes) => {
-        const updatedIndexes = prevIndexes.map(
-          (prevIndex) => (prevIndex + 1) % 5
-        );
-        return updatedIndexes;
-      });
-    }, 4000); // Change every 5 seconds
+    if (isAutoplay) {
+      const intervalId = setInterval(() => {
+        setPositionIndexes((prevIndexes) => {
+          const updatedIndexes = prevIndexes.map(
+            (prevIndex) => (prevIndex + 1) % 5
+          );
+          return updatedIndexes;
+        });
+      }, 5000); // Change every 4 seconds
 
-    return () => clearInterval(intervalId);
-  }, []);
+      return () => clearInterval(intervalId);
+    }
+  }, [isAutoplay]);
+
+  const handleHoverStart = () => {
+    setIsAutoplay(false);
+  };
+
+  const handleHoverEnd = () => {
+    setIsAutoplay(true);
+  };
 
   return (
     <div className=" mt-[6rem] overflow-hidden">
       <div className="text-center text-3xl text-white md:text-5xl font-bold ">
         Customer Stories
       </div>
-      <div className="flex justify-center w-full mt-24">
+
+      <div className=" my-6 flex items-center gap-5 justify-end mr-4 md:mr-16">
+        <AiOutlineLeft
+          onClick={handleBack}
+          className=" cursor-pointer hover:border-cyan-500 hover:text-cyan-500 transition-all duration-300 ease-in-out text-4xl sm:text-5xl border rounded-full p-1"
+        />
+        <AiOutlineRight
+          onClick={handleNext}
+          className=" cursor-pointer hover:border-cyan-500 hover:text-cyan-500 transition-all duration-300 ease-in-out text-4xl sm:text-5xl border rounded-full p-1"
+        />
+      </div>
+
+      <div className="flex justify-between w-full mt-24">
         {cards.map((card) => (
           <motion.div
             key={card.id}
@@ -184,7 +212,11 @@ const FeedBacks = () => {
               left: isMobile ? "25%" : isSmall ? "10%" : "30%",
             }}
           >
-            <Card card={card} />
+            <Card
+              card={card}
+              onHoverStart={handleHoverStart}
+              onHoverEnd={handleHoverEnd}
+            />
           </motion.div>
         ))}
       </div>
