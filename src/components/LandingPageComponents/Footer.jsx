@@ -32,8 +32,8 @@ const Footer = () => {
           <a data-replace="Pricing">
             <span>Pricing</span>
           </a>
-          <a data-replace="Contact" href="#contact">
-            <span>Contact</span>
+          <a data-replace="Book a Demo" href="#contact">
+            <span>Book a Demo</span>
           </a>
         </div>
 

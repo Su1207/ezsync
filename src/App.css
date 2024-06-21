@@ -11,7 +11,7 @@ html {
   scroll-behavior: smooth;
 }
 /* src/index.css */
-body {
+.landing_page {
   background-image: url("/bg.svg");
   background-repeat: no-repeat;
   background-position: center;

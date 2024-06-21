@@ -21,7 +21,7 @@ const Features = () => {
               potential fit for the role."
           />
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/cloud.png"}
             title={"Data Driven Insights"}
             content="Lucia generates data-driven insights and recommendations based on
             the interview analysis. It identifies patterns, trends, and
@@ -30,7 +30,7 @@ const Features = () => {
             and placement."
           />
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/experience.png"}
             title={"Enchanced Candidate Experience"}
             content="Lucia prioritizes candidate experience by delivering a seamless and
             engaging interview process. Its conversational interface and
@@ -40,7 +40,7 @@ const Features = () => {
           />
 
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/ai.png"}
             title={"Continuous Learning and Improvement"}
             content="Lucia continuously learns and improves over time through feedback
             and iterative refinement. By incorporating user input and
@@ -50,7 +50,7 @@ const Features = () => {
           />
 
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/meeting.png"}
             title={"Time Effective Interviews"}
             content="Lucia streamlines the interview process, saving valuable time for
             both candidates and hiring managers. Its efficient questioning
@@ -59,7 +59,7 @@ const Features = () => {
           />
 
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/graph.png"}
             title={"Graph-Based Analysis"}
             content="Lucia employs graph-based analysis techniques to visualize candidate
             data and insights. By forming graphs based on the questions asked,
@@ -69,7 +69,7 @@ const Features = () => {
           />
 
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/cheer-up.png"}
             title={"Assessment of Candidate's Eagerness to Join"}
             content="Through carefully crafted questions and analysis of candidate
             responses, Lucia assesses the candidate's level of enthusiasm and
@@ -79,7 +79,7 @@ const Features = () => {
           />
 
           <FeatureCard
-            icon={"/feature1.jpeg"}
+            icon={"/assessment.png"}
             title={"Evaluation of Knowledge About Job Roles"}
             content="Lucia evaluates the candidate's understanding of the job role by
             asking targeted questions related to the responsibilities,

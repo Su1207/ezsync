@@ -7,6 +7,8 @@ import { jwtDecode } from "jwt-decode";
 import { setToken } from "../store/tokenSlice";
 import { toast } from "react-toastify";
 
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Register = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("student");
@@ -20,7 +22,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/company/register",
+        `${API_BASE_URL}/company/register`,
         {
           fullName,
           email,
@@ -55,6 +57,10 @@ const Register = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  const signUpWithGoogle = () => {
+    window.open(`${API_BASE_URL}/auth/google/callback`, "_self");
+  };
 
   return (
     <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-white">
@@ -92,7 +98,10 @@ const Register = () => {
               alt=""
               className="w-9 h-9 border border-blue-800 rounded-l-md p-2"
             />
-            <div className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300">
+            <div
+              onClick={signUpWithGoogle}
+              className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300"
+            >
               <div className=" text-sm">Sign up with Google</div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
