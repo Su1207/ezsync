@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DropdownMenu from "./DropDownMenu";
 
-const DashboardNavbar = ({ logo }) => {
+const DashboardNavbar = ({ logo, setLoading }) => {
+  const [isloading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(isloading);
+  }, [isloading]);
+
   return (
     <div className=" text-gray-200 bg-violet-900 px-6 py-2 text-sm font-poppins md:block hidden">
       <div className=" flex items-center justify-between">
@@ -12,7 +18,7 @@ const DashboardNavbar = ({ logo }) => {
           <div>Screening Resume</div>
         </div>
         <div>
-          <DropdownMenu logo={logo} />
+          <DropdownMenu logo={logo} setIsLoading={setIsLoading} />
         </div>
       </div>
     </div>

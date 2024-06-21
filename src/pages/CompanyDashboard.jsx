@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCompanyDetails } from "../store/companySlice";
 import DashboardNavbar from "../components/DashboardComponent/DashboardNavbar";
@@ -7,6 +7,7 @@ const CompanyDashboard = () => {
   const companyDetails = useSelector((state) => state.company.companyDetails);
   const company = useSelector((state) => state.company.currentUser);
   const status = useSelector((state) => state.company.status);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -18,7 +19,7 @@ const CompanyDashboard = () => {
     }
   }, [dispatch, company]);
 
-  if (status !== "idle") {
+  if (status !== "idle" || loading) {
     return (
       <div className="h-[90vh] w-full flex justify-center items-center">
         <svg
@@ -48,7 +49,7 @@ const CompanyDashboard = () => {
 
   return (
     <div className=" bg-white w-full min-h-screen">
-      <DashboardNavbar logo={companyDetails?.logo} />
+      <DashboardNavbar logo={companyDetails?.logo} setLoading={setLoading} />
       <div className=" pt-5 text-5xl text-center">Dashboard</div>
       <div className=" mt-5 text-center text-2xl">
         Welcome {company.fullName}
