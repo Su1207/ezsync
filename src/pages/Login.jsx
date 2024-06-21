@@ -1,24 +1,64 @@
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../store/companySlice";
+import { setToken } from "../store/tokenSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("student");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     navigate("/register");
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/company/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        const token = response.data;
+        const decodedToken = jwtDecode(token);
+        dispatch(setUser(decodedToken));
+        dispatch(setToken(token));
+
+        toast.success("Login Successful!");
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.message);
+    }
   };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  const loginWithGoogle = () => {
+    window.open("http://localhost:4000/auth/google/callback", "_self");
+  };
+
   return (
     <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-white">
       <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-[#45ffc7] flex flex-col justify-center p-5">
         <div className=" flex flex-col items-center w-full p-5">
           <div className=" text-4xl font-bold mb-4">Sign In</div>
-          <div className=" flex items-center gap-3 mb-8 ">
+          {/* <div className=" flex items-center gap-3 mb-8 ">
             <div
               onClick={() => setSelectedOption("student")}
               className={`${
@@ -39,14 +79,17 @@ const Login = () => {
             >
               Company
             </div>
-          </div>
+          </div> */}
           <div className="flex items-center gap-1 mb-4">
             <img
               src="/google.png"
               alt=""
               className="w-9 h-9 border border-blue-800 rounded-l-md p-2"
             />
-            <div className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300">
+            <div
+              onClick={loginWithGoogle}
+              className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300"
+            >
               <div className=" text-sm">Sign in with Google</div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,13 +116,17 @@ const Login = () => {
             <div className="h-0 border-black border w-1/4"></div>
           </div>
 
-          <form className="flex flex-col gap-2 w-auto sm:w-[24rem]">
+          <form
+            onSubmit={handleLogin}
+            className="flex flex-col gap-2 w-auto sm:w-[24rem]"
+          >
             <div className="flex flex-col gap-1">
               <label className=" text-black font-semibold text-sm">
                 Work Email
               </label>
               <input
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="youremail@company.com"
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
@@ -111,6 +158,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 12 characters"
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />

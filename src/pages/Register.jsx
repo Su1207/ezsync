@@ -1,9 +1,52 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../store/companySlice";
+import { jwtDecode } from "jwt-decode";
+import { setToken } from "../store/tokenSlice";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("student");
+
+  const [fullName, setfullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/company/register",
+        {
+          fullName,
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        console.log(response.data);
+        const token = response.data;
+        const decodedToken = jwtDecode(token);
+        dispatch(setUser(decodedToken));
+        dispatch(setToken(token));
+
+        toast.success("Register successful!");
+        navigate("/companyDetails");
+        setfullName("");
+        setEmail("");
+        setPassword("");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.message);
+    }
+  };
 
   const handleClick = () => {
     navigate("/login");
@@ -20,7 +63,7 @@ const Register = () => {
           <div className=" text-2xl sm:text-4xl text-center font-bold mb-4">
             Start your free trial
           </div>
-          <div className=" flex items-center gap-3 mb-8 ">
+          {/* <div className=" flex items-center gap-3 mb-8 ">
             <div
               onClick={() => setSelectedOption("student")}
               className={`${
@@ -41,7 +84,7 @@ const Register = () => {
             >
               Company
             </div>
-          </div>
+          </div> */}
 
           <div className="flex items-center gap-1 mb-4">
             <img
@@ -76,8 +119,11 @@ const Register = () => {
             <div className="h-0 border-black border w-1/4"></div>
           </div>
 
-          <form className="flex flex-col gap-2 w-auto sm:w-[24rem]">
-            <div className="flex flex-col gap-1">
+          <form
+            onSubmit={handleRegister}
+            className="flex flex-col gap-2 w-auto sm:w-[24rem]"
+          >
+            {/* <div className="flex flex-col gap-1">
               <label className=" text-black font-semibold text-sm">
                 Full Name
               </label>
@@ -86,14 +132,15 @@ const Register = () => {
                 placeholder="First name and last name"
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
-            </div>
+            </div> */}
             <div className="flex flex-col gap-1">
               <label className=" text-black font-semibold text-sm">
-                Company Name
+                Full Name
               </label>
               <input
                 type="text"
-                placeholder="Your company name"
+                placeholder="Your name"
+                onChange={(e) => setfullName(e.target.value)}
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
             </div>
@@ -103,6 +150,7 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="youremail@company.com"
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
@@ -134,6 +182,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 12 characters"
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
