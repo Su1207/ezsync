@@ -5,12 +5,15 @@ import DashboardNavbar from "../components/DashboardComponent/DashboardNavbar";
 import SemiProgressBar from "../components/DashboardComponent/SemiProgressBar/SemiProgressBar";
 import Assessment from "../components/DashboardComponent/Assessment";
 import LiveUpdates from "../components/DashboardComponent/LiveUpdates";
+import DashboardResponsiveNavbar from "../components/DashboardComponent/DashboardResponsiveNavbar";
 
 const CompanyDashboard = () => {
   const companyDetails = useSelector((state) => state.company.companyDetails);
   const company = useSelector((state) => state.company.currentUser);
   const status = useSelector((state) => state.company.status);
   const [loading, setLoading] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [magnetActive, setMagnetActive] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -56,7 +59,14 @@ const CompanyDashboard = () => {
   return (
     <div className=" bg-gray-100 w-full font-poppins min-h-screen pb-5">
       <DashboardNavbar logo={companyDetails?.logo} setLoading={setLoading} />
-      <div className=" pt-5 font-semibold text-2xl flex items-center mx-6">
+      <DashboardResponsiveNavbar
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        setMagnetActive={setMagnetActive}
+        logo={companyDetails?.logo}
+        setLoading={setLoading}
+      />
+      <div className=" pt-24 md:pt-5 font-semibold text-2xl flex items-center mx-6">
         Welcome, {company.fullName}{" "}
         <img src="/hello.png" alt="" className=" h-12" />
       </div>
