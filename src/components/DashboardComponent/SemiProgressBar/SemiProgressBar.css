@@ -1,0 +1,37 @@
+.card {
+  /* width: 300px;
+  height: 300px; */
+  height: 15rem;
+  background-color: #08aeea;
+  background-image: linear-gradient(180deg, #08aeea 0%, #2af598 100%);
+  color: white;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+}
+
+#container {
+  width: 200px;
+  height: 130px;
+  margin: 0 auto;
+}
+
+.description {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.progressbar__label {
+  font-size: 1rem;
+  text-align: center;
+  transform: translate(-50%, 0) !important;
+}
+
+/* svg {
+  height: 130px;
+  width: 200px;
+  fill: none;
+  stroke: #fafafa;
+  stroke-width: 15;
+  stroke-linecap: round;
+  filter: drop-shadow(-3px -2px 5px rgba(255, 255, 255, 0.5));
+} */
