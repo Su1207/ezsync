@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DropdownMenu from "./DropDownMenu";
+import { Link } from "react-router-dom";
 
 const DashboardNavbar = ({ logo, setLoading }) => {
   const [isloading, setIsLoading] = useState(false);
@@ -14,8 +15,10 @@ const DashboardNavbar = ({ logo, setLoading }) => {
         <div className=" flex items-center gap-10">
           <div className=" text-xl pl-5">Logo</div>
           <div>Dashboard</div>
+          <Link data-replace="Screening Resume" to={"/resume_screening"}>
+            <span>Screening Resume</span>
+          </Link>
           <div>Create Assessment</div>
-          <div>Screening Resume</div>
         </div>
         <div>
           <DropdownMenu logo={logo} setIsLoading={setIsLoading} />

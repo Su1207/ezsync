@@ -17,6 +17,17 @@ export const fetchCompanyDetails = createAsyncThunk(
   }
 );
 
+export const fetchAtsScoreList = createAsyncThunk(
+  "company/fetchAtsScoreList",
+  async (id) => {
+    const response = await axios.get(`${API_BASE_URL}/atsScoreList/${id}`, {
+      withCredentials: true,
+    });
+
+    return response.data;
+  }
+);
+
 const companySlice = createSlice({
   name: "company",
   initialState: {
@@ -24,6 +35,7 @@ const companySlice = createSlice({
     currentUser: null,
     error: null, // Add error field
     companyDetails: null,
+    atsScoreList: [],
     status: "idle",
   },
   reducers: {
@@ -37,6 +49,7 @@ const companySlice = createSlice({
       state.currentUser = null;
       state.error = null; // Reset error state
       state.companyDetails = null;
+      state.atsScoreList = [];
       state.status = "idle";
     },
   },
@@ -50,6 +63,17 @@ const companySlice = createSlice({
         state.status = "idle";
       })
       .addCase(fetchCompanyDetails.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.status = "idle";
+      })
+      .addCase(fetchAtsScoreList.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAtsScoreList.fulfilled, (state, action) => {
+        state.atsScoreList = action.payload;
+        state.status = "idle";
+      })
+      .addCase(fetchAtsScoreList.rejected, (state, action) => {
         state.error = action.payload.message;
         state.status = "idle";
       });

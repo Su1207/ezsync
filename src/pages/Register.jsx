@@ -68,8 +68,8 @@ const Register = () => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-white">
-      <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-[#45ffc7] flex flex-col justify-center p-5">
+    <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center text-white min-h-screen font-poppins sm:bg-white">
+      <div className="landing_page w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen flex flex-col justify-center p-5">
         <div className=" flex flex-col items-center w-full p-4 sm:p-5">
           <div className=" text-2xl sm:text-4xl text-center font-bold mb-4">
             Start your free trial
@@ -101,11 +101,11 @@ const Register = () => {
             <img
               src="/google.png"
               alt=""
-              className="w-9 h-9 border border-blue-800 rounded-l-md p-2"
+              className="w-9 h-9 bg-orange-500 rounded-l-md p-2"
             />
             <div
               onClick={signUpWithGoogle}
-              className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300"
+              className="flex justify-center cursor-pointer text-white transition-all duration-300 ease-in-out items-center gap-3 bg-orange-500 hover:bg-orange-700 rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem]"
             >
               <div className=" text-sm">Sign up with Google</div>
               <svg
@@ -126,11 +126,11 @@ const Register = () => {
           </div>
 
           <div className=" flex items-center mb-4 justify-between w-auto sm:w-[24rem]">
-            <div className="h-0 border-black border w-1/4"></div>
-            <div className=" text-black text-sm w-2/4 text-center">
+            <div className="h-0 border-white border w-1/4"></div>
+            <div className=" text-white text-sm w-2/4 text-center">
               or using your email
             </div>
-            <div className="h-0 border-black border w-1/4"></div>
+            <div className="h-0 border-white border w-1/4"></div>
           </div>
 
           <form
@@ -148,7 +148,7 @@ const Register = () => {
               />
             </div> */}
             <div className="flex flex-col gap-1">
-              <label className=" text-black font-semibold text-sm">
+              <label className=" text-gray-300 font-semibold text-sm">
                 Full Name
               </label>
               <input
@@ -159,7 +159,7 @@ const Register = () => {
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className=" text-black font-semibold text-sm">
+              <label className=" text-gray-300 font-semibold text-sm">
                 Work Email
               </label>
               <input
@@ -183,7 +183,7 @@ const Register = () => {
                     d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
                   />
                 </svg>
-                <div className=" text-gray-500 text-justify text-xs">
+                <div className=" text-black text-justify text-xs">
                   Use your corporate email to integrate customer emails,
                   existing applications, and invite your team members
                 </div>
@@ -191,7 +191,7 @@ const Register = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className=" text-black font-semibold text-sm">
+              <label className=" text-gray-300 font-semibold text-sm">
                 Password
               </label>
               <input
@@ -203,7 +203,7 @@ const Register = () => {
             </div>
             <button
               type="submit"
-              className=" w-full p-2.5 rounded-md hover:text-white transition-all duration-300 ease-in-out flex justify-center items-center bg-[#1e1c25] text-sm mt-4 text-gray-200 outline-none"
+              className=" w-full p-2.5 rounded-md text-white transition-all duration-300 ease-in-out flex justify-center items-center bg-orange-500 hover:bg-orange-700 text-sm mt-4 outline-none"
             >
               {loading ? (
                 <svg
@@ -233,8 +233,8 @@ const Register = () => {
           </form>
 
           <div className=" flex items-center gap-1 justify-end  w-auto sm:w-[24rem] mt-2">
-            <div className=" text-gray-700 text-xs sm:text-sm font-light">
-              Already using Respondo?
+            <div className=" text-gray-300 text-xs sm:text-sm font-light">
+              Already using EZSync?
             </div>
             <div
               onClick={handleClick}

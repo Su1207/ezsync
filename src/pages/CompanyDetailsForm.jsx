@@ -85,24 +85,23 @@ const CompanyDetailsForm = () => {
   }
 
   return (
-    <div className=" bg-blue-50 shadow-md rounded-md text-sm min-h-screen font-poppins">
-      <h2 className="text-3xl font-bold pt-4 text-center mb-6">
-        Company Details
-      </h2>
-
-      <div className=" lg:flex items-start gap-5">
-        <div className=" lg:w-[40%] ml-4 flex items-center justify-center">
+    <div className="  shadow-md rounded-md text-sm min-h-screen font-poppins">
+      <div className=" lg:flex items-start gap-4">
+        <div className=" lg:w-[40%] ml-4 mt-8 flex items-center justify-center">
           <img
             src="/form.png"
             alt=""
             className=" h-[18rem] sm:h-[25rem] xl:h-[28rem]"
           />
         </div>
-        <div className=" lg:w-[60%]">
+        <div className=" lg:w-[60%] m-4 rounded-xl shadow-lg bg-blue-700">
           <form className="space-y-4 p-4 sm:p-8" onSubmit={handleSubmit}>
-            <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-2">
+            <h2 className="text-3xl text-white font-bold pt-4 text-center mb-6">
+              Tell us about your Company
+            </h2>
+            <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-4">
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Company Name
                 </label>
                 <input
@@ -115,7 +114,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   LinkedIn URL
                 </label>
                 <input
@@ -127,7 +126,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Website URL
                 </label>
                 <input
@@ -139,7 +138,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Phone Number
                 </label>
                 <input
@@ -151,7 +150,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Email
                 </label>
                 <input
@@ -163,7 +162,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Employee Length
                 </label>
                 <input
@@ -175,7 +174,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Type of Company
                 </label>
                 <select
@@ -189,7 +188,7 @@ const CompanyDetailsForm = () => {
                 </select>
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">Logo</label>
+                <label className="text-sm mb-1 block text-gray-300">Logo</label>
                 <input
                   type="file"
                   onChange={(e) => setFile(e.target.files[0])}
@@ -197,7 +196,7 @@ const CompanyDetailsForm = () => {
                 />
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   About Company
                 </label>
                 <textarea
@@ -208,7 +207,7 @@ const CompanyDetailsForm = () => {
                 ></textarea>
               </div>
               <div>
-                <label className="text-sm mb-1 block text-gray-700">
+                <label className="text-sm mb-1 block text-gray-300">
                   Location: Headquarter
                 </label>
                 <input
@@ -222,7 +221,7 @@ const CompanyDetailsForm = () => {
             </div>
             <button
               type="submit"
-              className="bg-blue-500 text-white py-2 px-4 outline-none rounded-md shadow-md w-full hover:bg-blue-700 transition duration-300"
+              className="bg-black text-white py-2 px-4 outline-none rounded-md shadow-md w-full hover:bg-gray-800  transition duration-300"
             >
               Save Details
             </button>

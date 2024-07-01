@@ -17,7 +17,7 @@ html {
   background-position: center;
   background-size: cover; /* Changed to cover to ensure it covers the full screen */
   min-height: 100vh; /* Ensure it covers the full viewport height */
-  width: 100vw; /* Ensure it covers the full viewport width */
+  width: 100%; /* Ensure it covers the full viewport width */
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
 }

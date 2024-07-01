@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCompanyDetails } from "../store/companySlice";
+import { fetchAtsScoreList, fetchCompanyDetails } from "../store/companySlice";
 import DashboardNavbar from "../components/DashboardComponent/DashboardNavbar";
 import SemiProgressBar from "../components/DashboardComponent/SemiProgressBar/SemiProgressBar";
 import Assessment from "../components/DashboardComponent/Assessment";
 import LiveUpdates from "../components/DashboardComponent/LiveUpdates";
 import DashboardResponsiveNavbar from "../components/DashboardComponent/DashboardResponsiveNavbar";
+import ScreeningTable from "../components/DashboardComponent/ScreeningTable";
 
 const CompanyDashboard = () => {
   const companyDetails = useSelector((state) => state.company.companyDetails);
   const company = useSelector((state) => state.company.currentUser);
+  const atsScoreList = useSelector((state) => state.company.atsScoreList);
   const status = useSelector((state) => state.company.status);
   const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [magnetActive, setMagnetActive] = useState(false);
+  const [invite, setInvite] = useState(false);
 
   const dispatch = useDispatch();
 
   const [currentValue, setCurrentValue] = useState(720); // Example current value
   const totalValue = 1000; // Example total value
 
-  console.log(companyDetails);
-
   useEffect(() => {
     if (company) {
       dispatch(fetchCompanyDetails(company.id));
+      dispatch(fetchAtsScoreList(company.id));
     }
-  }, [dispatch, company]);
+  }, [dispatch, company, invite]);
+
+  console.log(atsScoreList);
 
   if (status !== "idle" || loading) {
     return (
@@ -97,6 +101,12 @@ const CompanyDashboard = () => {
       <Assessment />
 
       <LiveUpdates />
+
+      <ScreeningTable
+        atsScoreList={atsScoreList}
+        invite={invite}
+        setInvite={setInvite}
+      />
     </div>
   );
 };

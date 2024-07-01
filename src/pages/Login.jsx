@@ -60,8 +60,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins sm:bg-white">
-      <div className="w-full lg:w-[60%] min-h-screen sm:min-h-max lg:min-h-screen bg-[#45ffc7] flex flex-col justify-center p-5">
+    <div className=" flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins text-white">
+      <div className="landing_page w-full lg:w-[60%] min-h-screen sm:min-h-max bg-white lg:min-h-screen flex flex-col justify-center p-5">
         <div className=" flex flex-col items-center w-full p-5">
           <div className=" text-4xl font-bold mb-4">Sign In</div>
           {/* <div className=" flex items-center gap-3 mb-8 ">
@@ -90,11 +90,11 @@ const Login = () => {
             <img
               src="/google.png"
               alt=""
-              className="w-9 h-9 border border-blue-800 rounded-l-md p-2"
+              className="w-9 h-9 bg-orange-500 rounded-l-md p-2"
             />
             <div
               onClick={loginWithGoogle}
-              className="flex justify-center cursor-pointer hover:text-white transition-all duration-300 ease-in-out items-center gap-3 bg-[#1e1c25] rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem] text-gray-300"
+              className="flex justify-center cursor-pointer text-white transition-all duration-300 ease-in-out items-center gap-3 bg-orange-500 hover:bg-orange-700 rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem]"
             >
               <div className=" text-sm">Sign in with Google</div>
               <svg
@@ -115,11 +115,11 @@ const Login = () => {
           </div>
 
           <div className=" flex items-center mb-4 justify-between w-auto sm:w-[24rem]">
-            <div className="h-0 border-black border w-1/4"></div>
-            <div className=" text-black text-sm w-2/4 text-center">
+            <div className="h-0 border-white border w-1/4"></div>
+            <div className=" text-white text-sm w-2/4 text-center">
               or using your email
             </div>
-            <div className="h-0 border-black border w-1/4"></div>
+            <div className="h-0 border-white border w-1/4"></div>
           </div>
 
           <form
@@ -127,7 +127,7 @@ const Login = () => {
             className="flex flex-col gap-2 w-auto sm:w-[24rem]"
           >
             <div className="flex flex-col gap-1">
-              <label className=" text-black font-semibold text-sm">
+              <label className=" text-gray-300 font-semibold text-sm">
                 Work Email
               </label>
               <input
@@ -159,7 +159,7 @@ const Login = () => {
             </div>
 
             <div className="flex flex-col gap-1">
-              <label className=" text-black font-semibold text-sm">
+              <label className=" text-gray-300 font-semibold text-sm">
                 Password
               </label>
               <input
@@ -172,7 +172,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className=" w-full p-2.5 rounded-md hover:text-white transition-all duration-300 ease-in-out flex justify-center items-center bg-[#1e1c25] text-sm mt-4 text-gray-200 outline-none"
+              className=" w-full p-2.5 rounded-md text-white transition-all duration-300 ease-in-out flex justify-center items-center bg-orange-500 hover:bg-orange-700 text-sm mt-4 outline-none"
             >
               {loading ? (
                 <svg
@@ -202,8 +202,8 @@ const Login = () => {
           </form>
 
           <div className=" flex items-center gap-1 justify-end  w-auto sm:w-[24rem] mt-2">
-            <div className=" text-gray-700 text-xs sm:text-sm font-light">
-              Are you new to Respondo?
+            <div className=" text-gray-300 text-xs sm:text-sm font-light">
+              Are you new to EZSync?
             </div>
             <div
               onClick={handleClick}

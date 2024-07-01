@@ -10,6 +10,7 @@ import Protected from "./components/protected/Protected";
 import useJwtDecode from "./utiils/useJwtDecode";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ResumeScreening from "./pages/ResumeScreening";
 
 function App() {
   useJwtDecode();
@@ -39,19 +40,21 @@ function App() {
             </Protected>
           }
         />
-        <Route
-          path="/companyDetails"
-          element={
-            <Protected>
-              <CompanyDetailsForm />
-            </Protected>
-          }
-        />
+        <Route path="/companyDetails" element={<CompanyDetailsForm />} />
         <Route
           path="/dashboard"
           element={
             <Protected>
               <CompanyDashboard />
+            </Protected>
+          }
+        />
+
+        <Route
+          path="/resume_screening"
+          element={
+            <Protected>
+              <ResumeScreening />
             </Protected>
           }
         />
