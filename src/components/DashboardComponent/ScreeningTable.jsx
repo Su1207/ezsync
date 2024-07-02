@@ -58,7 +58,7 @@ const ScreeningTable = ({ atsScoreList, invite, setInvite }) => {
           </tr>
         </thead>
         <tbody>
-          {atsScoreList.length > 0 &&
+          {atsScoreList &&
             atsScoreList.map((job, index) => (
               <tr
                 key={index}
