@@ -87,14 +87,14 @@ const CompanyDetailsForm = () => {
   return (
     <div className="  shadow-md rounded-md text-sm min-h-screen font-poppins">
       <div className=" lg:flex items-start gap-4">
-        <div className=" lg:w-[40%] ml-4 mt-8 flex items-center justify-center">
+        <div className=" lg:w-[40%] lg:ml-4 mt-8 flex items-center justify-center">
           <img
-            src="/form.png"
+            src="/form.gif"
             alt=""
-            className=" h-[18rem] sm:h-[25rem] xl:h-[28rem]"
+            className=" h-[25rem] sm:h-[26rem] xl:h-[28rem]"
           />
         </div>
-        <div className=" lg:w-[60%] m-4 rounded-xl shadow-lg bg-blue-700">
+        <div className=" lg:w-[60%] lg:h-[95vh] overflow-y-auto m-4 mt-0 lg:mt-4 rounded-xl shadow-lg bg-blue-700">
           <form className="space-y-4 p-4 sm:p-8" onSubmit={handleSubmit}>
             <h2 className="text-3xl text-white font-bold pt-4 text-center mb-6">
               Tell us about your Company
