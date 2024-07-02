@@ -69,18 +69,19 @@ const DashboardResponsiveNavbar = ({
             Dashboard
           </Link>
           <Link
-            to={"/dashboard"}
+            to={"/resume_screening"}
+            data-replace="Screening Resume"
             className=" text-3xl"
             onClick={() => setIsMenuOpen(false)}
           >
-            Create Assessment
+            <span>Screening Resume</span>
           </Link>
           <Link
             to={"/dashboard"}
             className=" text-3xl"
             onClick={() => setIsMenuOpen(false)}
           >
-            Screening Resume
+            Create Assessment
           </Link>
         </div>
       </motion.nav>
