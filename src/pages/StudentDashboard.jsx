@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCompanyDetails } from "../store/companySlice";
+import {
+  fetchCompanyDetails,
+  fetchStudentDetails,
+} from "../store/companySlice";
 import DashboardNavbar from "../components/DashboardComponent/DashboardNavbar";
 import SemiProgressBar from "../components/DashboardComponent/SemiProgressBar/SemiProgressBar";
 import Assessment from "../components/DashboardComponent/Assessment";
@@ -9,25 +12,27 @@ import DashboardResponsiveNavbar from "../components/DashboardComponent/Dashboar
 import ScreeningTable from "../components/DashboardComponent/ScreeningTable";
 import { Navigate } from "react-router-dom";
 
-const CompanyDashboard = () => {
-  const companyDetails = useSelector((state) => state.user.companyDetails);
-  const company = useSelector((state) => state.user.currentUser);
+const StudentDashboard = () => {
+  const studentDetails = useSelector((state) => state.user.studentDetails);
+  const user = useSelector((state) => state.user.currentUser);
   const atsScoreList = useSelector((state) => state.user.atsScoreList);
   const status = useSelector((state) => state.user.status);
   const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [magnetActive, setMagnetActive] = useState(false);
+  const [invite, setInvite] = useState(false);
 
   const dispatch = useDispatch();
 
-  const [currentValue, setCurrentValue] = useState(0); // Example current value
-  const [totalValue, setTotalValue] = useState(0);
+  const [currentValue, setCurrentValue] = useState(720); // Example current value
+  const totalValue = 1000; // Example total value
 
   useEffect(() => {
-    if (company) {
-      dispatch(fetchCompanyDetails(company.id));
+    if (user) {
+      dispatch(fetchStudentDetails(user.id));
+      dispatch(fetchStudentATSScore(user.id));
     }
-  }, [dispatch, company]);
+  }, [dispatch, user, invite]);
 
   if (status !== "idle" || loading) {
     return (
@@ -59,24 +64,27 @@ const CompanyDashboard = () => {
 
   return (
     <div className=" bg-gray-100 w-full font-poppins min-h-screen pb-5">
-      {/* {status === "idle" && !companyDetails && (
-        <Navigate to={"/companyDetails"} replace={true}></Navigate>
+      {/* {status === "idle" && !studentDetails && (
+        <Navigate to={"/candidateDetails"} replace={true}></Navigate>
       )} */}
-      <DashboardNavbar logo={companyDetails?.logo} setLoading={setLoading} />
+      <DashboardNavbar
+        logo={studentDetails?.profileImage}
+        setLoading={setLoading}
+      />
       <DashboardResponsiveNavbar
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         setMagnetActive={setMagnetActive}
-        logo={companyDetails?.logo}
+        logo={studentDetails?.profileImage}
         setLoading={setLoading}
       />
       <div className=" pt-24 md:pt-5 font-semibold text-2xl flex items-center mx-6">
-        Welcome, {company.fullName}{" "}
+        Welcome, {user.fullName}{" "}
         <img src="/hello.png" alt="" className=" h-12" />
       </div>
 
       <div className="flex md:flex-row flex-col items-center w-[96%] mt-4 mx-[2%] gap-4 md:gap-[2%]">
-        <div className="w-full md:w-2/3 lg:w-3/4 bg-gray-200 px-4 py-8 relative rounded-md flex flex-col gap-4 overflow-hidden items-center justify-center">
+        <div className="w-full md:w-2/3 lg:w-3/4 bg-gray-300 px-4 py-8 relative rounded-md flex flex-col gap-4 overflow-hidden items-center justify-center">
           <div className=" w-[10rem] h-[10rem] bg-cyan-400 rounded-full absolute bottom-[-80px] sm:bottom-[-60px] left-[-60px] sm:left-[-30px]"></div>
           <div className=" w-[15rem] h-[15rem] bg-transparent rounded-full border-[12px] border-orange-600 absolute top-[-150px] sm:top-[-120px] right-[-150px] sm:right-[-120px]"></div>
           <div className=" text-cyan-400 text-2xl sm:text-4xl font-bold">
@@ -98,20 +106,17 @@ const CompanyDashboard = () => {
         </div>
       </div>
 
-      <Assessment
-        setCurrentValue={setCurrentValue}
-        setTotalValue={setTotalValue}
-      />
+      {/* <Assessment />
 
-      {/* <LiveUpdates /> */}
+      <LiveUpdates />*/}
 
-      {/* <ScreeningTable
+      <ScreeningTable
         atsScoreList={atsScoreList}
         invite={invite}
         setInvite={setInvite}
-      /> */}
+      />
     </div>
   );
 };
 
-export default CompanyDashboard;
+export default StudentDashboard;

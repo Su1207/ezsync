@@ -25,7 +25,9 @@ const Register = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${API_BASE_URL}/company/register`,
+        `${API_BASE_URL}/${
+          selectedOption === "student" ? "student" : "company"
+        }/register`,
         {
           fullName,
           email,
@@ -42,7 +44,13 @@ const Register = () => {
         dispatch(setToken(token));
 
         toast.success("Register successful!");
-        navigate("/companyDetails");
+        navigate(
+          `${
+            selectedOption === "student"
+              ? "/candidateDetails"
+              : "/companyDetails"
+          }`
+        );
         setfullName("");
         setEmail("");
         setPassword("");
@@ -74,7 +82,7 @@ const Register = () => {
           <div className=" text-2xl sm:text-4xl text-center font-bold mb-4">
             Start your free trial
           </div>
-          {/* <div className=" flex items-center gap-3 mb-8 ">
+          <div className=" flex items-center gap-3 mb-8 ">
             <div
               onClick={() => setSelectedOption("student")}
               className={`${
@@ -95,7 +103,7 @@ const Register = () => {
             >
               Company
             </div>
-          </div> */}
+          </div>
 
           <div className="flex items-center gap-1 mb-4">
             <img

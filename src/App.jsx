@@ -11,6 +11,7 @@ import useJwtDecode from "./utiils/useJwtDecode";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ResumeScreening from "./pages/ResumeScreening";
+import StudentDashboard from "./pages/StudentDashboard";
 
 function App() {
   useJwtDecode();
@@ -40,12 +41,27 @@ function App() {
             </Protected>
           }
         />
-        <Route path="/companyDetails" element={<CompanyDetailsForm />} />
+        <Route
+          path="/companyDetails"
+          element={
+            <Protected>
+              <CompanyDetailsForm />
+            </Protected>
+          }
+        />
         <Route
           path="/dashboard"
           element={
             <Protected>
               <CompanyDashboard />
+            </Protected>
+          }
+        />
+        <Route
+          path="/studentDashboard"
+          element={
+            <Protected>
+              <StudentDashboard />
             </Protected>
           }
         />

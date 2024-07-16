@@ -17,7 +17,7 @@ import tokenSlice from "./tokenSlice";
 
 // Combine all your slices into a root reducer
 const rootReducer = combineReducers({
-  company: companySlice,
+  user: companySlice,
   token: tokenSlice,
 });
 

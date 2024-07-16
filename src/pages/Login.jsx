@@ -26,7 +26,9 @@ const Login = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${API_BASE_URL}/company/login`,
+        `${API_BASE_URL}/${
+          selectedOption === "student" ? "student" : "company"
+        }/login`,
         {
           email,
           password,
@@ -41,7 +43,9 @@ const Login = () => {
         dispatch(setToken(token));
 
         toast.success("Login Successful!");
-        navigate("/dashboard");
+        navigate(
+          `${selectedOption === "student" ? "/studentDashboard" : "/dashboard"}`
+        );
       }
     } catch (err) {
       console.log(err);
@@ -64,7 +68,7 @@ const Login = () => {
       <div className="landing_page w-full lg:w-[60%] min-h-screen sm:min-h-max bg-white lg:min-h-screen flex flex-col justify-center p-5">
         <div className=" flex flex-col items-center w-full p-5">
           <div className=" text-4xl font-bold mb-4">Sign In</div>
-          {/* <div className=" flex items-center gap-3 mb-8 ">
+          <div className=" flex items-center gap-3 mb-8 ">
             <div
               onClick={() => setSelectedOption("student")}
               className={`${
@@ -85,7 +89,7 @@ const Login = () => {
             >
               Company
             </div>
-          </div> */}
+          </div>
           <div className="flex items-center gap-1 mb-4">
             <img
               src="/google.png"

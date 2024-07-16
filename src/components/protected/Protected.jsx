@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 function Protected({ children }) {
-  const user = useSelector((state) => state.company?.currentUser);
+  const user = useSelector((state) => state.user?.currentUser);
 
   if (!user) {
     return <Navigate to="/" replace={true} />;

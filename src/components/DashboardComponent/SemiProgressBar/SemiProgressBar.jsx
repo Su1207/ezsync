@@ -60,16 +60,16 @@ const SemiProgressBar = ({ currentValue, totalValue }) => {
           ref={containerRef}
           className="progress-bar-container flex items-center justify-center"
         ></div>
-        <div className="mt-4 flex justify-center text-black items-center gap-8">
+        {/* <div className="mt-4 flex justify-center text-black items-center gap-8">
           <div className=" text-xs flex items-center gap-2">
             <div className=" w-3 h-3 bg-[#fafafa] rounded-full"></div>
-            Onboarding
+            Screening Cleared
           </div>
           <div className=" text-xs flex items-center gap-2">
             <div className=" w-3 h-3 bg-[#FFFFFF66] rounded-full"></div>
             Offboarding
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

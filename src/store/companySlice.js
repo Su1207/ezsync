@@ -17,25 +17,39 @@ export const fetchCompanyDetails = createAsyncThunk(
   }
 );
 
-export const fetchAtsScoreList = createAsyncThunk(
-  "company/fetchAtsScoreList",
+export const fetchStudentDetails = createAsyncThunk(
+  "company/fetchStudentDetails",
   async (id) => {
-    const response = await axios.get(`${API_BASE_URL}/atsScoreList/${id}`, {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${API_BASE_URL}/student/studentDetails/${id}`,
+      {
+        withCredentials: true,
+      }
+    );
 
     return response.data;
   }
 );
 
+// export const fetchStudentATSScore = createAsyncThunk(
+//   "company/fetchStudentATSScore",
+//   async (id) => {
+//     const response = await axios.get(`${API_BASE_URL}/getAtsScore/${id}`, {
+//       withCredentials: true,
+//     });
+
+//     return response.data;
+//   }
+// );
+
 const companySlice = createSlice({
-  name: "company",
+  name: "user",
   initialState: {
     isAuthenticated: false,
     currentUser: null,
     error: null, // Add error field
     companyDetails: null,
-    atsScoreList: [],
+    studentDetails: null,
     status: "idle",
   },
   reducers: {
@@ -49,7 +63,7 @@ const companySlice = createSlice({
       state.currentUser = null;
       state.error = null; // Reset error state
       state.companyDetails = null;
-      state.atsScoreList = [];
+      state.studentDetails = null;
       state.status = "idle";
     },
   },
@@ -63,18 +77,19 @@ const companySlice = createSlice({
         state.status = "idle";
       })
       .addCase(fetchCompanyDetails.rejected, (state, action) => {
-        state.error = action.payload.message;
+        state.error = action.payload;
         state.status = "idle";
       })
-      .addCase(fetchAtsScoreList.pending, (state) => {
+
+      .addCase(fetchStudentDetails.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchAtsScoreList.fulfilled, (state, action) => {
-        state.atsScoreList = action.payload;
+      .addCase(fetchStudentDetails.fulfilled, (state, action) => {
+        state.studentDetails = action.payload;
         state.status = "idle";
       })
-      .addCase(fetchAtsScoreList.rejected, (state, action) => {
-        state.error = action.payload.message;
+      .addCase(fetchStudentDetails.rejected, (state, action) => {
+        state.error = action.payload;
         state.status = "idle";
       });
   },

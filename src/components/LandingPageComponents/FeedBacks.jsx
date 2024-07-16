@@ -186,7 +186,7 @@ const FeedBacks = () => {
         Customer Stories
       </div>
 
-      <div className=" my-6 flex items-center gap-5 justify-end mr-4 md:mr-16">
+      <div className=" my-6 flex items-center gap-5 justify-between mx-10 sm:mx-24 md:mx-48 lg:mx-60">
         <AiOutlineLeft
           onClick={handleBack}
           className=" cursor-pointer hover:border-cyan-500 hover:text-cyan-500 transition-all duration-300 ease-in-out text-4xl sm:text-5xl border rounded-full p-1"
@@ -197,7 +197,7 @@ const FeedBacks = () => {
         />
       </div>
 
-      <div className="flex justify-between w-full mt-24">
+      <div className="flex justify-between w-full mt-18">
         {cards.map((card) => (
           <motion.div
             key={card.id}
