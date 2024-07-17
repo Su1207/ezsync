@@ -9,7 +9,7 @@ const ResponsiveNavbar = ({ isMenuOpen, setIsMenuOpen, setMagnetActive }) => {
         to={"/"}
         className="text-white font-bold text-2xl cursor-pointer flex gap-1 items-center"
       >
-        {/* <div className="text-[#126bfb] text-5xl">C</div>iloops */}
+        <img src="/2.png" alt="" className="h-14" />
       </Link>
       <button
         className={`relative w-14 h-14 bg-black hover:bg-zinc-800/80 rounded-full flex flex-col items-center transition-all duration-300 justify-center ${

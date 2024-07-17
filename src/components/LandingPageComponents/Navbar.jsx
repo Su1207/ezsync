@@ -1,11 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
   return (
     <div className=" text-gray-200 rounded-full px-6 py-3 text-sm font-poppins mx-8 md:block hidden">
       <div className=" flex items-center justify-between">
-        <div className=" text-xl pl-5">Logo</div>
+        <div className=" text-xl pl-5 cursor-pointer" onClick={handleLogoClick}>
+          <img src="/2.png" alt="" className=" h-14" />
+        </div>
         <div className=" flex items-center gap-10">
           <a href="#features" data-replace="Features">
             <span>Features</span>

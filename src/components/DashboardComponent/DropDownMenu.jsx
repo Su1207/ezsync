@@ -44,7 +44,7 @@ const DropdownMenu = ({ logo, setIsLoading }) => {
         <img
           src={logo}
           alt="User avatar"
-          className="w-12 md:w-10 h-12 md:h-10 rounded-full cursor-pointer"
+          className="w-12 border p-1 bg-slate-50 md:w-10 h-12 md:h-10 rounded-full cursor-pointer"
         />
       </MenuButton>
 
