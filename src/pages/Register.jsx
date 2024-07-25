@@ -37,7 +37,6 @@ const Register = () => {
       );
 
       if (response.status === 200) {
-        console.log(response.data);
         const token = response.data;
         const decodedToken = jwtDecode(token);
         dispatch(setUser(decodedToken));

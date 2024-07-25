@@ -33,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route
           path="/candidateDetails"
           element={
@@ -58,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/studentDashboard"
+          path="/studentDashboard/*"
           element={
             <Protected>
               <StudentDashboard />

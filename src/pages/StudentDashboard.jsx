@@ -1,40 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchCompanyDetails,
-  fetchStudentDetails,
-} from "../store/companySlice";
-import DashboardNavbar from "../components/DashboardComponent/DashboardNavbar";
-import SemiProgressBar from "../components/DashboardComponent/SemiProgressBar/SemiProgressBar";
-import Assessment from "../components/DashboardComponent/Assessment";
-import LiveUpdates from "../components/DashboardComponent/LiveUpdates";
-import DashboardResponsiveNavbar from "../components/DashboardComponent/DashboardResponsiveNavbar";
-import ScreeningTable from "../components/DashboardComponent/ScreeningTable";
-import { Navigate } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
+import { clearUser, fetchStudentDetails } from "../store/companySlice";
+import Interview from "./Interview";
+import StudentHomepage from "../components/StudentDashboardComponent/StudentHomepage";
+import StudentResponsiveNav from "../components/StudentDashboardComponent/StudentResponsiveNav";
+import axios from "axios";
+import { clearToken } from "../store/tokenSlice";
+import { toast } from "react-toastify";
+// import Home from "./StudentPages/Home";
+// import Profile from "./StudentPages/Profile";
+// import Settings from "./StudentPages/Settings";
+
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 const StudentDashboard = () => {
-  const studentDetails = useSelector((state) => state.user.studentDetails);
-  const user = useSelector((state) => state.user.currentUser);
-  const atsScoreList = useSelector((state) => state.user.atsScoreList);
-  const status = useSelector((state) => state.user.status);
-  const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [magnetActive, setMagnetActive] = useState(false);
-  const [invite, setInvite] = useState(false);
+  const studentDetails = useSelector((state) => state.user.studentDetails);
+  const student = useSelector((state) => state.user.currentUser);
+  const status = useSelector((state) => state.user.status);
 
   const dispatch = useDispatch();
 
-  const [currentValue, setCurrentValue] = useState(720); // Example current value
-  const totalValue = 1000; // Example total value
-
   useEffect(() => {
-    if (user) {
-      dispatch(fetchStudentDetails(user.id));
-      dispatch(fetchStudentATSScore(user.id));
+    if (student) {
+      dispatch(fetchStudentDetails(student.id));
     }
-  }, [dispatch, user, invite]);
+  }, [dispatch, student]);
 
-  if (status !== "idle" || loading) {
+  const logout = async () => {
+    try {
+      await axios.get(`${API_BASE_URL}/logout`);
+
+      dispatch(clearUser());
+      dispatch(clearToken());
+
+      toast("Logout success!!!");
+    } catch (err) {
+      console.log(err);
+      toast.error("Error in logout, try again later");
+    }
+  };
+
+  if (status !== "idle") {
     return (
       <div className="h-[90vh] w-full flex justify-center items-center">
         <svg
@@ -63,58 +72,96 @@ const StudentDashboard = () => {
   }
 
   return (
-    <div className=" bg-gray-100 w-full font-poppins min-h-screen pb-5">
-      {/* {status === "idle" && !studentDetails && (
-        <Navigate to={"/candidateDetails"} replace={true}></Navigate>
-      )} */}
-      <DashboardNavbar
-        logo={studentDetails?.profileImage}
-        setLoading={setLoading}
-      />
-      <DashboardResponsiveNavbar
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <nav className="hidden lg:w-1/4 xl:w-1/5 bg-gray-800 text-white lg:flex flex-col">
+        <div className="p-4 flex flex-col gap-2 items-center border-b border-gray-700">
+          <img
+            src={studentDetails?.profileImage}
+            alt="Profile"
+            className="w-24 h-24 rounded-full"
+          />
+          <h2 className=" text-2xl font-bold">{student?.fullName}</h2>
+          <p className=" text-xl font-semibold">{studentDetails?.college}</p>
+        </div>
+        <ul className="flex-1 p-4 space-y-2">
+          <li>
+            <NavLink
+              to="interview"
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Interview
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to=""
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Resume Generation
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to=""
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Cover Letter Generation
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to=""
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Jobs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to=""
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Digital Profile Generate
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to=""
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Expert Guidance
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={logout}
+              className="block px-4 py-2 rounded hover:bg-gray-700"
+            >
+              Logout
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+
+      <StudentResponsiveNav
         isMenuOpen={isMenuOpen}
         setIsMenuOpen={setIsMenuOpen}
         setMagnetActive={setMagnetActive}
-        logo={studentDetails?.profileImage}
-        setLoading={setLoading}
+        profile={studentDetails?.profileImage}
+        name={student?.fullName}
+        college={studentDetails?.college}
       />
-      <div className=" pt-24 md:pt-5 font-semibold text-2xl flex items-center mx-6">
-        Welcome, {user.fullName}{" "}
-        <img src="/hello.png" alt="" className=" h-12" />
-      </div>
 
-      <div className="flex md:flex-row flex-col items-center w-[96%] mt-4 mx-[2%] gap-4 md:gap-[2%]">
-        <div className="w-full md:w-2/3 lg:w-3/4 bg-gray-300 px-4 py-8 relative rounded-md flex flex-col gap-4 overflow-hidden items-center justify-center">
-          <div className=" w-[10rem] h-[10rem] bg-cyan-400 rounded-full absolute bottom-[-80px] sm:bottom-[-60px] left-[-60px] sm:left-[-30px]"></div>
-          <div className=" w-[15rem] h-[15rem] bg-transparent rounded-full border-[12px] border-orange-600 absolute top-[-150px] sm:top-[-120px] right-[-150px] sm:right-[-120px]"></div>
-          <div className=" text-cyan-400 text-2xl sm:text-4xl font-bold">
-            Call to Action
-          </div>
-          <p className="text-xs sm:text-sm z-20 sm:w-[50%] text-gray-700 text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio earum
-            id ratione delectus velit cupiditate nam animi aperiam temporibus!
-          </p>
-          <button className=" bg-cyan-400 px-4 sm:text-base text-sm py-2 rounded-md shadow-lg text-white">
-            Get Started
-          </button>
-        </div>
-        <div className="w-full md:w-1/3 lg:w-1/4 shadow-lg rounded-md">
-          <SemiProgressBar
-            currentValue={currentValue}
-            totalValue={totalValue}
-          />
-        </div>
-      </div>
-
-      {/* <Assessment />
-
-      <LiveUpdates />*/}
-
-      <ScreeningTable
-        atsScoreList={atsScoreList}
-        invite={invite}
-        setInvite={setInvite}
-      />
+      {/* Main content */}
+      <main className="w-full pt-24 lg:pt-6 lg:w-3/4 xl:w-4/5 p-6 bg-gray-100">
+        <Routes>
+          <Route path="" element={<StudentHomepage />} />
+          <Route path="interview" element={<Interview />} />
+          {/* <Route path="profile" element={<Profile />} />
+          <Route path="settings" element={<Settings />} /> */}
+        </Routes>
+      </main>
     </div>
   );
 };

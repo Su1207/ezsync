@@ -13,6 +13,7 @@ import Pricing from "../components/LandingPageComponents/Pricing";
 import ContactForm from "../components/LandingPageComponents/ContactForm";
 import OldWayNewWay from "../components/LandingPageComponents/OldWayNewWay";
 import Team from "../components/LandingPageComponents/Team";
+import UniversitySlider from "../components/LandingPageComponents/UniversitySlider";
 
 const LandingPage = () => {
   const videoRef = useRef(null);
@@ -160,7 +161,7 @@ const LandingPage = () => {
 
       <Features />
 
-      <OldWayNewWay />
+      {/* <OldWayNewWay /> */}
 
       {/* <div
         id="team"
@@ -236,6 +237,13 @@ const LandingPage = () => {
       <Pricing />
 
       <FeedBacks />
+
+      <div className=" mt-[25rem] bg-white py-10">
+        <h2 className=" text-xl text-center text-black font-semibold mb-10">
+          Trusted by students from 50+ Universities
+        </h2>
+        <UniversitySlider />
+      </div>
 
       <ContactForm />
 

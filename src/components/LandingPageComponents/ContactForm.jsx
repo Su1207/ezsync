@@ -11,10 +11,7 @@ import {
 
 const ContactForm = () => {
   return (
-    <div
-      id="contact"
-      className="max-w-7xl mx-12 my-[6rem] mt-[24rem] font-poppins"
-    >
+    <div id="contact" className="max-w-7xl mx-12 my-[6rem] font-poppins">
       <h2 className="text-3xl sm:text-5xl font-bold text-center mb-8">
         Book a Demo
       </h2>

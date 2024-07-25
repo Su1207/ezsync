@@ -47,7 +47,6 @@ const CompanyDetailsForm = () => {
           },
         }
       );
-      console.log(response.data);
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
