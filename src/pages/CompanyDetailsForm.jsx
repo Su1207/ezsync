@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -50,6 +51,7 @@ const CompanyDetailsForm = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }

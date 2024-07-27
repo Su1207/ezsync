@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { setUser } from "../store/companySlice";
 import { setToken } from "../store/tokenSlice";
 import { toast } from "react-toastify";
+import { auth, gprovider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -59,8 +61,35 @@ const Login = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const loginWithGoogle = () => {
-    window.open(`${API_BASE_URL}/auth/google/callback`, "_self");
+  const signInWithGoogle = async () => {
+    signInWithPopup(auth, gprovider)
+      .then((result) => {
+        // console.log(result);
+        axios
+          .post(`${API_BASE_URL}/${selectedOption}/googleAuth`, {
+            fullName: result.user.displayName,
+            email: result.user.email,
+          })
+          .then((res) => {
+            const token = res.data;
+            const decodedToken = jwtDecode(token);
+            dispatch(setUser(decodedToken));
+            dispatch(setToken(token));
+
+            toast.success("Register successful!");
+            navigate(
+              `${
+                selectedOption === "student"
+                  ? "/studentDashboard"
+                  : "/dashboard"
+              }`
+            );
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Invalid credentials or Error occured");
+      });
   };
 
   return (
@@ -97,7 +126,7 @@ const Login = () => {
               className="w-9 h-9 bg-orange-500 rounded-l-md p-2"
             />
             <div
-              onClick={loginWithGoogle}
+              onClick={signInWithGoogle}
               className="flex justify-center cursor-pointer text-white transition-all duration-300 ease-in-out items-center gap-3 bg-orange-500 hover:bg-orange-700 rounded-r-md py-2 px-8 sm:px-2 w-auto sm:w-[22rem]"
             >
               <div className=" text-sm">Sign in with Google</div>

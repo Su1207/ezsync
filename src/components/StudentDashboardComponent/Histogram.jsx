@@ -16,8 +16,8 @@ const CustomTooltip = ({ payload, label }) => {
     const { question, accuracy, gestures, relevance, knowledge } =
       payload[0].payload;
     return (
-      <div className="custom-tooltip bg-[#000] shadow-md rounded-md text-white p-4 text-sm">
-        <p className="label">{`Question: ${question}`}</p>
+      <div className="custom-tooltip bg-[#000] w-[70%] sm:w-full shadow-md rounded-md text-white p-2 sm:p-4 text-xs sm:text-sm">
+        <p className="label mb-2">{`Question: ${question}`}</p>
         <p className="intro">{`Accuracy: ${accuracy}`}</p>
         <p className="intro">{`Gestures: ${gestures}`}</p>
         <p className="intro">{`Relevance: ${relevance}`}</p>

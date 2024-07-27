@@ -6,6 +6,8 @@ import { setUser } from "../store/companySlice";
 import { jwtDecode } from "jwt-decode";
 import { setToken } from "../store/tokenSlice";
 import { toast } from "react-toastify";
+import { auth, gprovider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -70,8 +72,35 @@ const Register = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const signUpWithGoogle = () => {
-    window.open(`${API_BASE_URL}/auth/google/callback`, "_self");
+  const signUpWithGoogle = async () => {
+    signInWithPopup(auth, gprovider)
+      .then((result) => {
+        // console.log(result);
+        axios
+          .post(`${API_BASE_URL}/${selectedOption}/googleAuth`, {
+            fullName: result.user.displayName,
+            email: result.user.email,
+          })
+          .then((res) => {
+            const token = res.data;
+            const decodedToken = jwtDecode(token);
+            dispatch(setUser(decodedToken));
+            dispatch(setToken(token));
+
+            toast.success("Register successful!");
+            navigate(
+              `${
+                selectedOption === "student"
+                  ? "/candidateDetails"
+                  : "/companyDetails"
+              }`
+            );
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Invalid credentials or Error occured");
+      });
   };
 
   return (

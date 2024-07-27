@@ -238,8 +238,8 @@ const LandingPage = () => {
 
       <FeedBacks />
 
-      <div className=" mt-[25rem] bg-white py-10">
-        <h2 className=" text-xl text-center text-black font-semibold mb-10">
+      <div className=" mt-[25rem] bg-white py-6 sm:py-10">
+        <h2 className=" text-lg sm:text-xl text-center text-black font-semibold mb-10">
           Trusted by students from 50+ Universities
         </h2>
         <UniversitySlider />

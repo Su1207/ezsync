@@ -7,7 +7,7 @@ import Assessment from "../components/DashboardComponent/Assessment";
 import LiveUpdates from "../components/DashboardComponent/LiveUpdates";
 import DashboardResponsiveNavbar from "../components/DashboardComponent/DashboardResponsiveNavbar";
 import ScreeningTable from "../components/DashboardComponent/ScreeningTable";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const CompanyDashboard = () => {
   const companyDetails = useSelector((state) => state.user.companyDetails);
@@ -17,6 +17,7 @@ const CompanyDashboard = () => {
   const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [magnetActive, setMagnetActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -28,6 +29,24 @@ const CompanyDashboard = () => {
       dispatch(fetchCompanyDetails(company.id));
     }
   }, [dispatch, company]);
+
+  useEffect(() => {
+    if (status === "idle") {
+      const delay = setTimeout(() => {
+        setIsLoading(false);
+      }, 500); // Adjust the delay time as needed (1000ms = 1 second)
+
+      return () => clearTimeout(delay); // Clear the timeout if the component unmounts or the effect re-runs
+    }
+  }, [status]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading && status === "idle" && !companyDetails) {
+      navigate("/companyDetails");
+    }
+  }, [isLoading, status, companyDetails, navigate]);
 
   if (status !== "idle" || loading) {
     return (

@@ -1,5 +1,12 @@
 import React from "react";
-import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Tooltip,
+  ResponsiveContainer,
+  Cell,
+  Legend,
+} from "recharts";
 
 const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff7300", "#d0ed57"];
 
@@ -29,14 +36,16 @@ const PersonalityChart = ({ data }) => {
             outerRadius={150}
             fill="#8884d8"
           >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
+            {data &&
+              data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
           </Pie>
           <Tooltip content={<CustomTooltip />} />
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     </div>

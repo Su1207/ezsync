@@ -109,3 +109,7 @@ a:hover span {
   transform: translateY(260px);
   -webkit-transform: translateY(260px);
 }
+
+.recharts-legend-wrapper {
+  bottom: -5px !important;
+}
