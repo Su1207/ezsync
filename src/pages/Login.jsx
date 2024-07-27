@@ -17,6 +17,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [googleLogin, setGoogleLogin] = useState(false);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -65,6 +66,7 @@ const Login = () => {
     signInWithPopup(auth, gprovider)
       .then((result) => {
         // console.log(result);
+        setGoogleLogin(true);
         axios
           .post(`${API_BASE_URL}/${selectedOption}/googleAuth`, {
             fullName: result.user.displayName,
@@ -76,6 +78,7 @@ const Login = () => {
             dispatch(setUser(decodedToken));
             dispatch(setToken(token));
 
+            setGoogleLogin(false);
             toast.success("Register successful!");
             navigate(
               `${
@@ -91,6 +94,34 @@ const Login = () => {
         toast.error("Invalid credentials or Error occured");
       });
   };
+
+  if (googleLogin) {
+    return (
+      <div className="h-[90vh] w-full flex justify-center items-center">
+        <svg
+          className="animate-spin h-5 w-5 mr-3"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C6.477 0 2 4.477 2 10h2zm2 5.291A7.962 7.962 0 014 12H2c0 3.314 2.686 6 6 6v-2.709z"
+          ></path>
+        </svg>
+        <div className="font-semibold">Signing In...</div>
+      </div>
+    );
+  }
 
   return (
     <div className=" flex lg:flex-row flex-col-reverse w-full h-full items-center min-h-screen font-poppins text-white">
