@@ -83,8 +83,8 @@ const StudentResponsiveNav = ({
         }}
         className="fixed inset-0 bg-zinc-900/80 backdrop-blur z-[-1] font-poppins text-xl sm:text-3xl"
       >
-        <div className="text-white pt-28 flex px-[5%] flex-col items-center gap-8 h-full font-poppins">
-          <div className=" space-y-2 flex mb-10 flex-col items-center">
+        <div className="text-white pt-20 flex px-[5%] flex-col items-center gap-5 overflow-y-scroll h-full font-poppins">
+          <div className=" space-y-2 flex mb-6 flex-col items-center">
             <img
               src={profile}
               alt="Profile"

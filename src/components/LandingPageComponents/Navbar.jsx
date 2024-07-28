@@ -28,7 +28,7 @@ const Navbar = () => {
             <span>Book a Demo</span>
           </a>
           <Link
-            to="/register"
+            to="/login"
             className=" bg-cyan-500 text-white  rounded-full shadow-lg px-4 py-3 text-xs hover:bg-[#fc7754] transition-all duration-300 ease-in-out"
           >
             Try Free

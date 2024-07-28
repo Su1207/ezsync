@@ -172,7 +172,7 @@ const Features = () => {
           />
         </div>
 
-        <h2 className=" text-4xl text-center text-black mb-8 mt-12 font-bold">
+        {/* <h2 className=" text-4xl text-center text-black mb-8 mt-12 font-bold">
           For Companies
         </h2>
         <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mx-4 gap-4">
@@ -184,7 +184,7 @@ const Features = () => {
               content={feature.content}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

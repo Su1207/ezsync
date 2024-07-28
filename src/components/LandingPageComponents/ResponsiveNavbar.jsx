@@ -78,7 +78,7 @@ const ResponsiveNavbar = ({ isMenuOpen, setIsMenuOpen, setMagnetActive }) => {
           >
             <span className=" text-3xl">Book a Demo</span>
           </a>
-          <a href="/register" data-replace="Sign In">
+          <a href="/login" data-replace="Sign In">
             <span className=" text-3xl" onClick={() => setIsMenuOpen(false)}>
               Try Free
             </span>
