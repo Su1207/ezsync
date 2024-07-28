@@ -58,7 +58,7 @@ const StudentFeatures = () => {
           alt=""
           className="w-[20vw] sm:block hidden sm:w-[25vw] lg:w-[28vw] h-[30vh] sm:h-[35vh] lg:h-[30rem] rounded-full"
         />
-        <div className="sm:hidden w-0 h-[350px] border-4 border-black"></div>
+        <div className="sm:hidden w-0 h-[380px] border-4 border-black"></div>
         <div className="flex flex-col items-center gap-8">
           <div className="flex items-center">
             <div className="w-6 md:w-12 border border-dashed border-blue-500"></div>
