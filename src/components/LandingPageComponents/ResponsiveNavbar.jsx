@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ResponsiveNavbar = ({ isMenuOpen, setIsMenuOpen, setMagnetActive }) => {
   return (
-    <header className=" md:hidden inset-x-0 top-0 flex fixed items-center justify-between px-[5%] py-3 lg:py-12 z-[999]">
+    <header className=" md:hidden inset-x-0 top-0 flex relative bg-gray-200 items-center justify-between px-[5%] py-3 lg:py-12 z-[999]">
       <Link
         onClick={() => setIsMenuOpen(false)}
         to={"/"}

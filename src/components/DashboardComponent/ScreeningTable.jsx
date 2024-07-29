@@ -25,7 +25,7 @@ const ScreeningTable = ({ atsScoreList, invite, setInvite, jobId }) => {
   return (
     <div className=" mt-4 overflow-x-auto rounded-md">
       {atsScoreList && atsScoreList.length > 0 && (
-        <table className="w-full text-sm text-left border rtl:text-right text-gray-900 dark:text-gray-400">
+        <table className="w-full text-sm text-left border rtl:text-right text-gray-900">
           <thead className="text-sm lg:text-base text-white uppercase bg-orange-400">
             <tr>
               <th scope="col" className="px-3 text-xs font-semibold py-3">
@@ -62,11 +62,11 @@ const ScreeningTable = ({ atsScoreList, invite, setInvite, jobId }) => {
               atsScoreList.map((job, index) => (
                 <tr
                   key={index}
-                  className="odd:bg-white odd:dark:bg-gray-900 text-xs even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+                  className="odd:bg-white text-xs even:bg-gray-50 border-b"
                 >
                   <th
                     scope="row"
-                    className="px-3 py-3 font-normal min-w-[14rem] text-gray-900 dark:text-white"
+                    className="px-3 py-3 font-normal min-w-[14rem] text-gray-900"
                   >
                     {job.name}
                   </th>

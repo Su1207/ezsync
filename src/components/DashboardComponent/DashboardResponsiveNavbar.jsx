@@ -17,7 +17,7 @@ const DashboardResponsiveNavbar = ({
   }, [isloading]);
 
   return (
-    <header className=" md:hidden inset-x-0 top-0 flex fixed items-center justify-between px-[5%] py-3 lg:py-12 z-[999]">
+    <header className=" md:hidden inset-x-0 top-0 flex relative items-center justify-between px-[5%] py-3 lg:py-12 z-[999]">
       <button
         className={`relative w-14 h-14 bg-gray-200 rounded-full flex flex-col items-center transition-all duration-300 justify-center ${
           !isMenuOpen ? "gap-y-1" : ""

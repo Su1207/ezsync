@@ -86,7 +86,7 @@ const StudentDashboard = () => {
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="lg:flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <nav className="hidden lg:w-1/4 xl:w-1/5 bg-gray-800 text-white lg:flex flex-col">
         <div className="p-4 flex flex-col gap-2 items-center border-b border-gray-700">
@@ -167,7 +167,7 @@ const StudentDashboard = () => {
       />
 
       {/* Main content */}
-      <main className="w-full pt-24 lg:pt-6 lg:w-3/4 xl:w-4/5 p-6 bg-gray-100">
+      <main className="w-full lg:pt-6 lg:w-3/4 xl:w-4/5 p-6">
         <Routes>
           <Route path="" element={<StudentHomepage />} />
           <Route path="interview" element={<Interview />} />

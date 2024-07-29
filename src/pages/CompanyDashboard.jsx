@@ -89,7 +89,7 @@ const CompanyDashboard = () => {
         logo={companyDetails?.logo}
         setLoading={setLoading}
       />
-      <div className=" pt-24 md:pt-5 font-semibold text-2xl flex items-center mx-6">
+      <div className=" md:pt-5 font-semibold text-2xl flex items-center mx-6">
         Welcome, {company.fullName}{" "}
         <img src="/hello.png" alt="" className=" h-12" />
       </div>

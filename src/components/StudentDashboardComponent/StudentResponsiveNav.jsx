@@ -36,7 +36,7 @@ const StudentResponsiveNav = ({
   };
 
   return (
-    <header className=" lg:hidden inset-x-0 top-0 flex fixed items-center justify-between px-[5%] py-3 lg:py-12 z-[999]">
+    <header className=" lg:hidden inset-x-0 top-0 flex relative items-center justify-between px-[5%] py-3 lg:py-12 z-[999]">
       <Link
         onClick={() => setIsMenuOpen(false)}
         to={"/"}

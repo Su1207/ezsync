@@ -16,11 +16,44 @@ import Team from "../components/LandingPageComponents/Team";
 import UniversitySlider from "../components/LandingPageComponents/UniversitySlider";
 import CompanyFeatures from "../components/LandingPageComponents/CompanyFeatures";
 import StudentFeatures from "../components/LandingPageComponents/StudentFeatures";
+import { ChevronUpIcon } from "@heroicons/react/24/solid";
+
+function MyComponent() {
+  return (
+    <div>
+      <BeakerIcon className="size-6 text-blue-500" />
+      <p>...</p>
+    </div>
+  );
+}
 
 const LandingPage = () => {
   const videoRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [magnetActive, setMagnetActive] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
 
   const ctrls = useAnimation();
   const { ref, inView } = useInView({
@@ -110,7 +143,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="landing_page w-full text-white pt-5 min-h-screen font-poppins">
+    <div className="landing_page w-full text-white min-h-screen font-poppins">
       <Navbar />
 
       <ResponsiveNavbar
@@ -118,6 +151,17 @@ const LandingPage = () => {
         setIsMenuOpen={setIsMenuOpen}
         setMagnetActive={setMagnetActive}
       />
+
+      <div className="fixed bottom-4 right-4 z-50">
+        {isVisible && (
+          <button
+            onClick={scrollToTop}
+            className="bg-[#1e1c25] text-white p-3 rounded-full shadow-lg hover:bg-blue-800 transition duration-300 ease-in-out"
+          >
+            <ChevronUpIcon className="size-6 text-gray-300" />
+          </button>
+        )}
+      </div>
 
       <div className="relative w-full flex flex-col gap-6 px-5 items-center justify-center mt-28 mb-40">
         <div className=" absolute lg:block hidden right-6 lg:right-36 top-[-2rem]">
