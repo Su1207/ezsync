@@ -34,7 +34,7 @@ const CompanyDashboard = () => {
     if (status === "idle") {
       const delay = setTimeout(() => {
         setIsLoading(false);
-      }, 500); // Adjust the delay time as needed (1000ms = 1 second)
+      }, 100); // Adjust the delay time as needed (1000ms = 1 second)
 
       return () => clearTimeout(delay); // Clear the timeout if the component unmounts or the effect re-runs
     }
@@ -48,7 +48,7 @@ const CompanyDashboard = () => {
     }
   }, [isLoading, status, companyDetails, navigate]);
 
-  if (status !== "idle" || loading) {
+  if (status !== "idle" || loading || isLoading) {
     return (
       <div className="h-[90vh] w-full flex justify-center items-center">
         <svg

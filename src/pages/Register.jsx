@@ -232,7 +232,11 @@ const Register = () => {
               <input
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="youremail@company.com"
+                placeholder={
+                  selectedOption === "student"
+                    ? "example@gmail.com"
+                    : "example@company.com"
+                }
                 className=" w-full p-2.5 border text-sm bg-white rounded-md outline-none text-black"
               />
               <div className=" w-full p-2.5 rounded-md shadow-lg bg-blue-50 flex justify-start items-start gap-2 mt-1">

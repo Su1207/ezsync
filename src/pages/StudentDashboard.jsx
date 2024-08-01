@@ -31,7 +31,7 @@ const StudentDashboard = () => {
     if (status === "idle") {
       const delay = setTimeout(() => {
         setLoading(false);
-      }, 500);
+      }, 100);
 
       return () => clearTimeout(delay); // Clear the timeout if the component unmounts or the effect re-runs
     }
@@ -57,7 +57,7 @@ const StudentDashboard = () => {
     }
   };
 
-  if (status !== "idle") {
+  if (status !== "idle" || loading) {
     return (
       <div className="h-[90vh] w-full flex justify-center items-center">
         <svg

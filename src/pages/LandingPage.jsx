@@ -143,7 +143,7 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="landing_page w-full text-white min-h-screen font-poppins">
+    <div className="landing_page w-full text-white pt-4 min-h-screen font-poppins">
       <Navbar />
 
       <ResponsiveNavbar

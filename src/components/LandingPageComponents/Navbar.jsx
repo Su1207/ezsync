@@ -8,7 +8,7 @@ const Navbar = () => {
     navigate("/");
   };
   return (
-    <div className=" text-gray-200 rounded-full px-6 py-3 text-sm font-poppins mx-8 md:block hidden">
+    <div className=" text-black bg-white rounded-full px-6 py-2 text-sm font-poppins mx-8 md:block hidden">
       <div className=" flex items-center justify-between">
         <div className=" text-xl pl-5 cursor-pointer" onClick={handleLogoClick}>
           <img src="/2.png" alt="" className=" h-14" />
