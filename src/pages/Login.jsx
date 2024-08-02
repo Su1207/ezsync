@@ -79,7 +79,7 @@ const Login = () => {
             dispatch(setToken(token));
 
             setGoogleLogin(false);
-            toast.success("Register successful!");
+            toast.success("Login successful!");
             navigate(
               `${
                 selectedOption === "student"

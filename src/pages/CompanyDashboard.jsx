@@ -102,8 +102,8 @@ const CompanyDashboard = () => {
             Call to Action
           </div>
           <p className="text-xs sm:text-sm z-20 sm:w-[50%] text-gray-700 text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio earum
-            id ratione delectus velit cupiditate nam animi aperiam temporibus!
+            Welcome to <span className="font-semibold">EZsync</span> - The
+            Ultimate Recruitment and Career Development Platform.
           </p>
           <button className=" bg-cyan-400 px-4 sm:text-base text-sm py-2 rounded-md shadow-lg text-white">
             Get Started
